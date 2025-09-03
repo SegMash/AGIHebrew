@@ -1,6 +1,6 @@
-tools/_pycache_
+_pycache_
 output
 kq1_clean
 kq1_work
-msisFiles/*.patch
-msisFiles/*.EXTENDED
+*.patch
+*.EXTENDED
