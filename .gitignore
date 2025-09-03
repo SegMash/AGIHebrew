@@ -1,0 +1,7 @@
+tools/_pycache_
+output
+kq1_clean
+kq1_work
+msisFiles/*.exe
+msisFiles/*.patch
+msisFiles/*.EXTENDED
