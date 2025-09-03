@@ -310,15 +310,10 @@ GAME_LVFPN("<game id lower case>", "", "logdir", "<YOUR LOGDIR MD5 value>", <siz
 - **AGI Engine** reverse-engineered by ScummVM team
 
 ### Translation Tools
-- Based on AGI reverse-engineering work - Zvika Haramati
+- Based on AGI reverse-engineering work - [adventurebrew team](https://github.com/adventurebrew/re-quest)
 - Python scripts for automated translation workflow
 - NSIS installer framework
 - More scripts by Segev Mashraky.
-
-### Hebrew Translation
-- Translation by AI & Segev Mashraky
-- Community testing and feedback
-- AI assistance for initial translations
 
 ## License
 
