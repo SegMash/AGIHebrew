@@ -1,10 +1,10 @@
-# King's Quest 1 Hebrew Translation Project
+# AGI Game Hebrew Translation Project
 
-A complete Hebrew translation toolkit for Sierra's King's Quest 1 (AGI version) including all game text, objects, inventory descriptions, and parser vocabulary.
+A complete Hebrew translation toolkit for Sierra's AGI Game including all game text, objects, inventory descriptions, and parser vocabulary.
 
 ## Overview
 
-This project provides a complete translation workflow from English to Hebrew for King's Quest 1, maintaining full compatibility with ScummVM while providing a native Hebrew gaming experience with proper right-to-left text support.
+This project provides a complete translation workflow from English to Hebrew for AGI game, maintaining full compatibility with ScummVM while providing a native Hebrew gaming experience with proper right-to-left text support.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This project provides a complete translation workflow from English to Hebrew for
 
 ### Directory Structure Setup
 ```
-kq1_translation/
+AGIHebrew/
 ├── clean/              # Original game files (backup)
 ├── work/               # Working directory for translation
 ├── tools/              # Translation scripts
@@ -33,7 +33,7 @@ kq1_translation/
 
 #### 1. Game Setup
 ```bash
-# Download KQ1 from GOG.com and extract to 'clean' directory
+# Download for example, KQ1 from GOG.com and extract to 'clean' directory
 # Copy all game files to 'work' directory for modification
 # Add clean and work dir as new games in scummvm and make sure they working as properly.
 # Install NSIS
@@ -232,7 +232,7 @@ makensis.exe .\nsisFiles\installer.nsi
 Create entry in ScummVM's `detection_table.h`:
 - make sure to replace '<YOUR LOGDIR MD5 value>' with your MD5 value - lower case!
 ```cpp
-// King's Quest 1 Hebrew Translation
+// Example: King's Quest 1 Hebrew Translation
 GAME_LVFPN("<game id lower case>", "", "logdir", "<YOUR LOGDIR MD5 value>", <size of LOGDIR in bytes>, Common::HE_ISR, 0x2917, GF_EXTCHAR, GID_KQ1, Common::kPlatformDOS, GType_V2, GAMEOPTIONS_DEFAULT),
 ```
 - rebuild scummvm
