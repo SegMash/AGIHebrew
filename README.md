@@ -9,9 +9,9 @@ This project provides a complete translation workflow from English to Hebrew for
 ## Prerequisites
 
 ### Required Software
-- **King's Quest 1** - Purchase from GOG.com (AGI version required)
+- **AGI Game** - Purchase from GOG.com
 - **WinAGI** - For game file extraction and compilation
-- **Python 3.x** - For running translation scripts  
+- **Python 3.x** - For running translation scripts. All tools tested with 3.13.
 - **NSIS** - For creating the installer package
 - **ScummVM Daily Build** - For testing and playing the translated game
 - **AI Translation Service** - For automated translation assistance (ChatGPT, Claude, etc.)
