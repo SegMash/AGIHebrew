@@ -208,7 +208,7 @@ GenPat.exe .\kq1_clean\VIEWDIR .\kq1_work\VIEWDIR .\nsisFiles\VIEWDIR.patch /r
 #### 19. Copy WORDS.TOK.EXTENDED
 ```bash
 # Copy additional required files to nsis directory
-cp ../work/WORDS.TOK.EXTENDED ./
+cp .\kq1_work\WORDS.TOK.EXTENDED .\nsisFiles\
 ```
 
 #### 20. Edit Installer Configuration
