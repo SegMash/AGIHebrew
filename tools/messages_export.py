@@ -13,6 +13,15 @@ from config import messages_csv_filename
 
 
 def messages_export(srcdir, pattern, csvdir, ignore):
+    # Check if output file already exists
+    output_file_path = os.path.join(csvdir, messages_csv_filename)
+    if os.path.exists(output_file_path):
+        print(f"❌ Error: Output file '{output_file_path}' already exists!")
+        print(f"   To prevent accidental overwriting, please:")
+        print(f"   1. Delete or rename the existing file, or")
+        print(f"   2. Choose a different output directory")
+        exit(1)
+    
     with open(os.path.join(csvdir, messages_csv_filename), 'w', newline='') as output_file:
         dict_writer = csv.DictWriter(output_file, fieldnames=config.messages_keys.keys())
         #dict_writer.writeheader()

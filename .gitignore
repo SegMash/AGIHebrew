@@ -4,3 +4,10 @@ kq1_clean
 kq1_work
 *.patch
 *.EXTENDED
+client_secret.json
+credentials.json
+*.zip
+token.json
+kq1.xlsx
+quick_sync.bat
+sync_scummvm_fork.bat

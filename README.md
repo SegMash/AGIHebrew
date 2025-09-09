@@ -35,6 +35,7 @@ AGIHebrew/
 ```bash
 # Download for example, KQ1 from GOG.com and extract to 'clean' directory
 # Copy all game files to 'work' directory for modification
+# These files: LOGDIR, OBJECT, PICDIR, SNDDIR, VIEWDIR, VOL.*, WORDS
 # Add clean and work dir as new games in scummvm and make sure they working as properly.
 # Install NSIS
 ```
@@ -50,12 +51,12 @@ AGIHebrew/
     - add it again.
     - Currently the game is not recognized yet - choose the last game in the list.
     - Make sure it works fine.
+    - This is the time to add "get" "drop" commands and to fix the logic itself.
 
 #### 3. Prepare Translation Environment
 First merge multilines messages. Note - in KQ1 when the game from GOG has no such lines and no free messages not in #message. So sometimes this step can be ignored. I recommend to run this step and to compare the src with the backup.
 
 ```bash
-git clone #TODO - add URL to the project.
 Example: python.exe .\tools\find_and_merge_multiline_prints.py --srcdir .\kq1_work\src --all --backup
 
 ```
@@ -100,13 +101,13 @@ python.exe .\tools\check_csv_commas.py .\output\messages.csv
 
 #### 9. Import Translated Messages
 ```bash
-python messages_import.py ../work/src ./output/
+python.exe .\tools\messages_import.py .\kq1_work\src  ./output/
 ```
 
 
 #### 10. Verify Translation Completeness
 ```bash
-python find_english_strings.py ../work/src
+python.exe .\tools\find_and_merge_multiline_prints.py --srcdir .\kq1_work\src\
 ```
 - This scans for any remaining English text that needs translation.
 - if you find missing translations - go back to the AI and ask to translate the missing in this part. - and then go back to step 7
@@ -308,6 +309,12 @@ GAME_LVFPN("<game id lower case>", "", "logdir", "<YOUR LOGDIR MD5 value>", <siz
 
 ### Original Game
 - **AGI Engine** reverse-engineered by ScummVM team
+- Changes I did in the original game:
+    * Change all "<any word>" to "anyword"
+    * Remove the object 26 water. no such object in inventory descriptions. (VOL files)
+    * instead of "get(water) - get full bucket and drop water bucket"
+
+
 
 ### Translation Tools
 - Based on AGI reverse-engineering work - [adventurebrew team](https://github.com/adventurebrew/re-quest)

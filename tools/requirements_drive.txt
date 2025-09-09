@@ -1,0 +1,6 @@
+# Requirements for CSV to XLSX Google Drive Manager
+# Install with: pip install -r requirements_drive.txt
+
+pydrive2>=1.15.0
+openpyxl>=3.1.0
+pandas>=2.0.0
