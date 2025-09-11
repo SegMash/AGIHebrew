@@ -154,6 +154,7 @@ python.exe .\tools\find_and_merge_multiline_prints.py --srcdir .\kq1_work\src\
 - Go through all views/pictures in WinAGI
 - Identify any graphics with English text that need translation
 - Edit graphics as needed and recompile
+- Update welcome picture, add hebrew credits, translate title to hebrew.
 
 ### Phase 4: Objects and Inventory
 
@@ -217,6 +218,12 @@ python.exe .\tools\words_export.py .\kq1_work\ .\output\
 python.exe .\tools\words_import.py .\kq1_work\ .\output\
 ```
 Verify that WORDS.TOK.EXTENDED file is created properly, and WORDS.TOK was changed.
+- Verify there are no duplicates. The import script adds for each word prefix of ['ה', 'ב', 'ל'], if you find duplicates - edit the words.csv and solve them.
+
+```bash
+python .\tools\scan_words_duplicates.py .\kq1_work\WORDS.TOK.EXTENDED
+```
+
 
 ### Phase 6: Distribution Package
 

@@ -43,10 +43,10 @@ def write_words_file(gamedir, words_by_index):
         extended_words.append((word, index))
         if not word.isascii():
             assert 'א' <= word[0] <= 'ת'
-            for prefix in ['ה', 'ב']:
+            for prefix in ['ה', 'ב', 'ל']:
                 eword = prefix + word
-                if eword not in [sw for (sw, _) in sorted_words]:
-                    extended_words.append((eword, index))
+                #if eword not in [sw for (sw, _) in sorted_words]:
+                extended_words.append((eword, index))
     sorted_words = sorted(extended_words)
 
     write_extended_words_tok(gamedir, sorted_words)
