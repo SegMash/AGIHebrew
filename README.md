@@ -99,6 +99,33 @@ python.exe .\tools\check_csv_commas.py .\output\messages.csv
 ```
 - If you find such rows - insert "..." surround the sentence.
 
+#### 8.1 Upload csv to google drive
+example:
+```bash
+python.exe .\tools\csv_xlsx_drive_v3.py --download --file-id tmpmjcpod_o.xlsx --output .\output\messages.csv
+```
+
+#### 8.2 Send link to google sheet to other people to review and fix.
+
+#### 8.3 After all fixes - download the file
+- Backup the original file
+```bash
+Move-Item .\output\messages.csv .\output\messages_backup.csv
+```
+- Get the file id by running this:
+```bash
+python.exe .\tools\csv_xlsx_drive_v3.py --list
+```
+- Download the new file
+```bash
+python.exe .\tools\csv_xlsx_drive_v3.py --download --file-id 1YspgPSt5l2l9-C8mfWQr0M24j8SefmpJ --output .\output\messages.csv
+```
+
+#### 8.4 Detect lines break in messages.csv - and fix manually
+```bash
+python.exe .\tools\check_csv_newlines.py .\output\messages.csv
+```
+
 #### 9. Import Translated Messages
 ```bash
 python.exe .\tools\messages_import.py .\kq1_work\src  ./output/
@@ -115,7 +142,7 @@ python.exe .\tools\find_and_merge_multiline_prints.py --srcdir .\kq1_work\src\
 ### Phase 3: Game Compilation and Asset Review
 
 #### 11. Compile and Test
-- Compile the game using **WinAGI**
+- Compile the game using **WinAGI** (it's recommended to reopen the project)
 - Copy the file agi-font-dos.bin from nsisFiles to your working game dir.
 - Test basic functionality. In this stage you can wrote english commands and see hebrew messages!
 - Look for any compilation errors

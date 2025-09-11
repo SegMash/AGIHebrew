@@ -41,23 +41,6 @@ def update_with_original(s, index, original_text, translation):
     original_pattern = f'#message {index} ".*"'
     s = re.sub(original_pattern, f'#message {index} "{escaped_translation}"', s)
     
-    # Then, replace any string literal that matches the original text with message index
-    #if original_text:
-    #    # Escape the original text for regex matching
-    #    escaped_original = re.escape(original_text)
-    #    # Pattern to match the exact string in quotes
-    #    string_pattern = f'"{escaped_original}"'
-    #    # Replace with message index (no quotes around the index)
-    #    replacement = f'm{index}'
-    #    s = re.sub(string_pattern, replacement, s)
-        
-        # If original text contains multiple spaces, try with normalized single spaces
-    #    if '  ' in original_text:  # Check if there are double spaces
-    #        normalized_text = re.sub(r'\s+', ' ', original_text)  # Replace multiple spaces with single space
-    #        escaped_normalized = re.escape(normalized_text)
-    #        normalized_pattern = f'"{escaped_normalized}"'
-    #        s = re.sub(normalized_pattern, replacement, s)
-    
     return s
 
 
@@ -78,7 +61,14 @@ def messages_import(srcdir, pattern, csvdir):
         reader = csv.reader(csvfile, skipinitialspace=True)
         texts = []
         
+        first_row = True
         for row in reader:
+            # Skip header row if it exists (detect by checking if first column is 'room')
+            if first_row and len(row) > 0 and row[0].lower() in ['room', 'חדר']:
+                first_row = False
+                continue
+            first_row = False
+            
             if len(row) >= 4:  # Ensure we have at least room, idx, original, translation
                 # Create dictionary with expected column names
                 entry = {
