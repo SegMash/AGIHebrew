@@ -217,6 +217,8 @@ python.exe .\tools\words_export.py .\kq1_work\ .\output\
 ```bash
 python.exe .\tools\words_import.py .\kq1_work\ .\output\
 ```
+##### 17.1 - Check for duplicates.
+
 Verify that WORDS.TOK.EXTENDED file is created properly, and WORDS.TOK was changed.
 - Verify there are no duplicates. The import script adds for each word prefix of ['ה', 'ב', 'ל'], if you find duplicates - edit the words.csv and solve them.
 
@@ -224,6 +226,21 @@ Verify that WORDS.TOK.EXTENDED file is created properly, and WORDS.TOK was chang
 python .\tools\scan_words_duplicates.py .\kq1_work\WORDS.TOK.EXTENDED
 ```
 
+##### 17.2 - Test all hebrew tokens are working (one of the valid responses)
+- First export all "said" tokens
+```bash
+python .\tools\scan_words_duplicates.py .\kq1_work\WORDS.TOK.EXTENDED
+```
+
+##### 17.3 - Test all "said" words
+- First fetch all "said" words
+```bash
+python .\tools\scan_said_strings.py .\kq1_work\src --format csv --output .\output\said_tokens.csv
+```
+
+- Now play the game and for each english "said" - try various of hebrew words, and fix the words.csv if needed.
+
+- If you touch the csv file - go back and import, and then check again for duplicates.
 
 ### Phase 6: Distribution Package
 
