@@ -75,11 +75,11 @@ def compute_text_payload_region(offset: int, total_size: int, vol_path: Path) ->
     - has_trailing_nul is True if the current payload's last byte is 0x00
     """
     with vol_path.open('rb') as f:
-        f.seek(offset + 7)
+        f.seek(offset + 8)
         hdr = f.read(2)
         if len(hdr) != 2:
             raise ValueError("could not read 2-byte text offset at offset+7")
-        text_offset = (hdr[0] << 8) | hdr[1]
+        text_offset = (hdr[1] << 8) | hdr[0]
         if text_offset > total_size:
             text_offset = hdr[1]
             if text_offset > total_size:

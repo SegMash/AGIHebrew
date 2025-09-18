@@ -1,4 +1,4 @@
-I need you to help me translate English game messages to Hebrew for a King's Quest I Hebrew localization project. 
+I need you to help me translate English game messages to Hebrew for a King's Quest II Hebrew localization project. 
 
 **Task:** Add Hebrew translations to CSV files containing game messages.
 
@@ -6,21 +6,23 @@ I need you to help me translate English game messages to Hebrew for a King's Que
 - Each CSV file has 4 columns: logic_number,message_id,"english_text",hebrew_translation
 - Column 3 contains English text that needs to be translated
 - Column 4 (currently empty) should be filled with Hebrew translation
+- Important: sometimes a message contains a comma in it - in this case there will be quotes surround the message.
+- Each csv file has 100 lines
 - Keep the CSV structure intact
 
 **Translation Guidelines:**
 1. Translate the English text in column 3 to Hebrew for column 4
-2. This is for a fantasy adventure game (King's Quest I), so maintain appropriate tone
+2. This is for a fantasy adventure game (King's Quest II), so maintain appropriate tone
 3. Preserve any special formatting, quotation marks, or punctuation within the text
 4. For game-specific terms (like character names, place names), use appropriate Hebrew transliterations
-5. Keep the translation natural and appropriate for Hebrew speakers
+5. Keep the translation natural and appropriate for Hebrew speakers. For example prefer a sentence like אין כאן גמד than a sentence like אין גמד כאן.
 6. When translating, consider that this is a text adventure game from the 1980s
 
 **IMPORTANT SPECIAL HANDLING:**
 - **Variables (%w1, %w2, %w3):** If you see %w1, %w2, or %w3 in the text, leave them EXACTLY as they are (don't change the order of letters) but place them in the appropriate position within the Hebrew sentence structure.
 - **Quotation marks ("):** If you see " characters in the text, leave them exactly as they are in the same position within the Hebrew sentence.
 
-**Current File:** output/messages_split/messages_part1.csv (200 rows)
+**Current File:** output/messages_split/messages_part1.csv (100 rows)
 **Next Files:** output/messages_split/messages_part2.csv through messages_part8.csv (I'll provide them sequentially)
 
 **Example of what I need:**

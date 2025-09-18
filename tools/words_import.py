@@ -6,6 +6,23 @@ import shutil
 import config
 
 
+# Blacklist of words that should not receive Hebrew prefixes
+HEBREW_PREFIX_BLACKLIST = ["הרים"]
+
+
+
+def is_word_blacklisted(word):
+    """Check if a word should not receive Hebrew prefixes.
+    
+    Args:
+        word (str): The word to check
+        
+    Returns:
+        bool: True if the word is blacklisted, False otherwise
+    """
+    return word.lower() in HEBREW_PREFIX_BLACKLIST
+
+
 def write_words_file(gamedir, words_by_index):
     sierra_orig_dir = os.path.join(gamedir, config.sierra_original)
     try:
@@ -41,12 +58,13 @@ def write_words_file(gamedir, words_by_index):
     extended_words = []
     for (word, index) in sorted_words:
         extended_words.append((word, index))
-        if not word.isascii():
+        if not word.isascii() and not is_word_blacklisted(word):
             assert 'א' <= word[0] <= 'ת'
             for prefix in ['ה', 'ב', 'ל']:
                 eword = prefix + word
-                #if eword not in [sw for (sw, _) in sorted_words]:
-                extended_words.append((eword, index))
+                # Only add if the prefixed word is not in blacklist
+                if not is_word_blacklisted(eword):
+                    extended_words.append((eword, index))
     sorted_words = sorted(extended_words)
 
     write_extended_words_tok(gamedir, sorted_words)

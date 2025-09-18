@@ -24,7 +24,7 @@ def split_file(input_file, output_dir=None, lines_per_file=250):
     
     # Create output directory if not provided
     if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(input_file), f"{input_name}_split2")
+        output_dir = os.path.join(os.path.dirname(input_file), f"{input_name}_split")
     
     # Create the output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)

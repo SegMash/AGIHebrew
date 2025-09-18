@@ -72,11 +72,14 @@ def _extract_text_data(offset: int, total_size: int, vol_path: Path) -> bytes:
         raise FileNotFoundError(f"VOL.0 not found at {vol_path}")
     with vol_path.open('rb') as f:
         # Read the 2-byte text offset at offset+7 (big-endian)
-        f.seek(offset + 7)
+        f.seek(offset + 8)
         hdr = f.read(2)
         if len(hdr) != 2:
             raise ValueError("could not read 2-byte text offset at offset+7")
-        text_offset = (hdr[0] << 8) | hdr[1]
+        
+        print(f"hdr hex value: {hdr.hex()}")
+        text_offset = (hdr[1] << 8) | hdr[0]
+        print(f"text_offset hex value: {text_offset}")
         # If the combined 16-bit offset is out of bounds, try using only the low byte.
         if text_offset > total_size:
             text_offset = hdr[1]

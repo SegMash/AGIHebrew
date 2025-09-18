@@ -1,7 +1,7 @@
 _pycache_
 output
-kq1_clean
-kq1_work
+kq*_clean
+kq*_work
 *.patch
 *.EXTENDED
 client_secret.json
@@ -11,3 +11,4 @@ token.json
 kq1.xlsx
 quick_sync.bat
 sync_scummvm_fork.bat
+*/*.exe

@@ -52,6 +52,23 @@ AGIHebrew/
     - Currently the game is not recognized yet - choose the last game in the list.
     - Make sure it works fine.
     - This is the time to add "get" "drop" commands and to fix the logic itself.
+##### 2.1 - replace get/drop/has hard-coded value with object index
+- First export objects to csv:
+Example: 
+```bash
+python.exe .\tools\object_export.py .\kq1_work\ .\output\
+```
+
+- Then replace logic files
+```bash
+python .\tools\replace_object_names_with_numbers.py .\kq2_clean\src .\output\object.csv
+```
+
+- Then compare src folder with src_before_replace_objects folder and verify the results.
+
+- Compile the game and make a short test.
+- Verify there are no hard-coded prints (ex: print("....")) in the game. (if there are needs to relpace with message number - currently there is no script for this.)
+- Then copy the logic files from the clean directory to the work directory.
 
 #### 3. Prepare Translation Environment
 First merge multilines messages. Note - in KQ1 when the game from GOG has no such lines and no free messages not in #message. So sometimes this step can be ignored. I recommend to run this step and to compare the src with the backup.
@@ -102,7 +119,7 @@ python.exe .\tools\check_csv_commas.py .\output\messages.csv
 #### 8.1 Upload csv to google drive
 example:
 ```bash
-python.exe .\tools\csv_xlsx_drive_v3.py --download --file-id tmpmjcpod_o.xlsx --output .\output\messages.csv
+python.exe .\tools\csv_xlsx_drive_v3.py --upload output/messages.csv --title "KQ2 Hebrew Messages"
 ```
 
 #### 8.2 Send link to google sheet to other people to review and fix.
@@ -194,7 +211,7 @@ python.exe .\tools\verify_translation_length.py .\output\inventory_eng.txt .\out
 - Take a backup of your VOL.0 file.
 - Now run for example:
 ```bash
-python.exe .\tools\apply_inventory_descriptions_batch.py .\kq1_work --file .\output\inventory_heb.txt --start-index 117 --end-index 141
+python.exe .\tools\apply_inventory_descriptions_batch.py .\kq1_work --file .\output\inventory_heb.txt
 ```
 - Test again your game. take an object look at your inventory, look at the object.
 
