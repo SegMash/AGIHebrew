@@ -77,9 +77,9 @@ def _extract_text_data(offset: int, total_size: int, vol_path: Path) -> bytes:
         if len(hdr) != 2:
             raise ValueError("could not read 2-byte text offset at offset+7")
         
-        print(f"hdr hex value: {hdr.hex()}")
+        #print(f"hdr hex value: {hdr.hex()}")
         text_offset = (hdr[1] << 8) | hdr[0]
-        print(f"text_offset hex value: {text_offset}")
+        #print(f"text_offset hex value: {text_offset}")
         # If the combined 16-bit offset is out of bounds, try using only the low byte.
         if text_offset > total_size:
             text_offset = hdr[1]
@@ -120,14 +120,14 @@ def print_view_bytes(offset: int, total_size: int, vol_path: Path, print_func=pr
 def print_view_text(offset: int, total_size: int, vol_path: Path, print_func=print) -> None:
     """Print the extracted text data as characters 0-255 until a null terminator.
 
-    Decoding uses latin-1 so each byte maps 1:1 to a Unicode code point.
+    Decoding uses windows-1255 for Hebrew text support.
     """
     data = _extract_text_data(offset, total_size, vol_path)
     end = data.find(b"\x00")
     if end != -1:
         data = data[:end]
-    # Map bytes 0..255 directly to Unicode code points 0..255
-    text = data.decode('latin-1', errors='replace')
+    # Decode using Windows-1255 for Hebrew text
+    text = data.decode('windows-1255', errors='replace')
     print_func(text)
 
 
@@ -229,7 +229,7 @@ def list_all_view_texts(viewdir_path: Path, vol_path: Path, start: int | None = 
             end = raw.find(b"\x00")
             if end != -1:
                 raw = raw[:end]
-            text = raw.decode('latin-1', errors='replace')
+            text = raw.decode('windows-1255', errors='replace')
             print_func(f"{i}|{text}")
         except Exception:
             # On any error extracting/decoding, print empty text for that index
@@ -266,7 +266,7 @@ def main() -> None:
         output_path = Path(args.output)
         # Create directory if it doesn't exist
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_file = open(output_path, 'w', encoding='utf-8')
+        output_file = open(output_path, 'w', encoding='windows-1255')
     
     def print_output(text):
         """Print to either the output file or stdout"""

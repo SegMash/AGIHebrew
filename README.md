@@ -33,7 +33,9 @@ AGIHebrew/
 
 #### 1. Game Setup
 ```bash
-# Download for example, KQ1 from GOG.com and extract to 'clean' directory
+# Download for example, KQ1 from GOG.com and extract to 'clean' directory and to 'gog' direcotry.
+# gog directory - you will not touch.
+# clean directory - you will change pictures/views and some logic pre-fixes. (like merge multilines, fix objects references and more)
 # Copy all game files to 'work' directory for modification
 # These files: LOGDIR, OBJECT, PICDIR, SNDDIR, VIEWDIR, VOL.*, WORDS
 # Add clean and work dir as new games in scummvm and make sure they working as properly.
@@ -261,38 +263,24 @@ python .\tools\scan_said_strings.py .\kq1_work\src --format csv --output .\outpu
 
 ### Phase 6: Distribution Package
 
-#### 18. Generate Game Patches
-Create binary patches for modified files:
-Example:
-```bash
-GenPat.exe .\kq1_clean\VOL.0 .\kq1_work\VOL.0 .\nsisFiles\VOL.0.patch /r
-GenPat.exe .\kq1_clean\OBJECT .\kq1_work\OBJECT .\nsisFiles\OBJECT.patch /r
-GenPat.exe .\kq1_clean\LOGDIR .\kq1_work\LOGDIR .\nsisFiles\LOGDIR.patch /r
-GenPat.exe .\kq1_clean\SNDDIR .\kq1_work\SNDDIR .\nsisFiles\SNDDIR.patch /r
-GenPat.exe .\kq1_clean\PICDIR .\kq1_work\PICDIR .\nsisFiles\PICDIR.patch /r 
-GenPat.exe .\kq1_clean\WORDS.TOK .\kq1_work\WORDS.TOK .\nsisFiles\WORDS.TOK.patch /r
-GenPat.exe .\kq1_clean\VIEWDIR .\kq1_work\VIEWDIR .\nsisFiles\VIEWDIR.patch /r
-```
-
-#### 19. Copy WORDS.TOK.EXTENDED
-```bash
-# Copy additional required files to nsis directory
-cp .\kq1_work\WORDS.TOK.EXTENDED .\nsisFiles\
-```
-
-#### 20. Edit Installer Configuration
+#### 19. Edit Installer Configuration
+- create nsisDir for your game. (ex: nsisFiles_kq1)
+- Add resources you need for example: agi-font-dos.bin
 - Update `installer.nsi` with correct paths and game information
 - Verify all patch files are referenced correctly
 
-#### 21. Build Installer
+
+#### 20. Generate Game Patches
+Create binary patches for modified files:
+Example:
 ```bash
-makensis.exe .\nsisFiles\installer.nsi
+.\tools\create_patches.cmd .\kq1_gog\ .\kq1_work\ .\nsisFiles_kq1
 ```
 - As a result installer will be generated under your nsisFiles dir.
 
 ### Phase 7: ScummVM Integration
 
-#### 23. Generate Detection Entry
+#### 21. Generate Detection Entry
 ```bash
 # Calculate MD5 of translated LOGDIR file
 (Get-FileHash -Algorithm MD5 .\kq1_work\LOGDIR).Hash.ToLower()
@@ -308,7 +296,7 @@ GAME_LVFPN("<game id lower case>", "", "logdir", "<YOUR LOGDIR MD5 value>", <siz
 
 ### Phase 8: Testing and Release
 
-#### 24. Quality Assurance
+#### 22. Quality Assurance
 - Run the installer on clean game installation
 - Run updated exe of scummvm and add the again again the clean game.
 - Verify all text displays correctly in Hebrew
@@ -316,12 +304,12 @@ GAME_LVFPN("<game id lower case>", "", "logdir", "<YOUR LOGDIR MD5 value>", <siz
 - Check parser vocabulary works properly
 - Test all game scenarios and endings
 
-#### 25. Release Process
+#### 23. Release Process
 - Push detection_table.h changes to ScummVM repository
 - Upload installer to GitHub releases
 - Create release notes in Hebrew and English
 
-#### 26. Community Announcement
+#### 24. Community Announcement
 - Post in "הרפתקה עברית" Facebook group
 - Share on relevant gaming forums
 - Update project documentation

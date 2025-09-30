@@ -1,0 +1,5 @@
+224|It is a large sheet of cloth.
+225|The pillow is small, and made of shiny red satin.
+226|The fishing net is fashioned from a material that is unfamiliar to you. It is smooth and tangle-proof.
+227|The magic carpet is a beautifully woven persian rug with a colorful fringe on the ends.
+228|The leather bridle is studded with silver rivets, and a silver bit.

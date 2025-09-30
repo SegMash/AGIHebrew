@@ -153,20 +153,31 @@ def update_view_text(index: int, message: str, srcdir: Path, dry_run: bool = Fal
 
 
 def iter_lines(path: Path):
-    with path.open("r", encoding="utf-8") as f:
-        for lineno, raw in enumerate(f, start=1):
-            line = raw.strip("\r\n")
-            if not line:
-                continue
-            parts = line.split("|", 1)
-            if len(parts) != 2:
-                yield lineno, None, None, f"missing '|' separator"
-                continue
-            idx_str, msg = parts[0].strip(), parts[1].lstrip()
-            if not idx_str.isdigit():
-                yield lineno, None, None, f"non-numeric index '{idx_str}'"
-                continue
-            yield lineno, int(idx_str), msg, None
+    # Try UTF-8 first, fall back to Windows-1255 for Hebrew text
+    encodings_to_try = ["utf-8", "windows-1255"]
+    
+    for encoding in encodings_to_try:
+        try:
+            with path.open("r", encoding=encoding) as f:
+                for lineno, raw in enumerate(f, start=1):
+                    line = raw.strip("\r\n")
+                    if not line:
+                        continue
+                    parts = line.split("|", 1)
+                    if len(parts) != 2:
+                        yield lineno, None, None, f"missing '|' separator"
+                        continue
+                    idx_str, msg = parts[0].strip(), parts[1].lstrip()
+                    if not idx_str.isdigit():
+                        yield lineno, None, None, f"non-numeric index '{idx_str}'"
+                        continue
+                    yield lineno, int(idx_str), msg, None
+            return  # Successfully read with this encoding
+        except UnicodeDecodeError:
+            continue  # Try next encoding
+    
+    # If all encodings failed, raise an error
+    raise UnicodeDecodeError(f"Could not decode file {path} with any of the attempted encodings: {encodings_to_try}")
 
 
 def main() -> None:

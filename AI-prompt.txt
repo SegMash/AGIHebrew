@@ -1,4 +1,4 @@
-I need you to help me translate English game messages to Hebrew for a King's Quest II Hebrew localization project. 
+I need you to help me translate English game messages to Hebrew for a King's Quest III Hebrew localization project. 
 
 **Task:** Add Hebrew translations to CSV files containing game messages.
 
@@ -22,11 +22,11 @@ I need you to help me translate English game messages to Hebrew for a King's Que
 - **Variables (%w1, %w2, %w3):** If you see %w1, %w2, or %w3 in the text, leave them EXACTLY as they are (don't change the order of letters) but place them in the appropriate position within the Hebrew sentence structure.
 - **Quotation marks ("):** If you see " characters in the text, leave them exactly as they are in the same position within the Hebrew sentence.
 
-**Current File:** output/messages_split/messages_part1.csv (100 rows)
-**Next Files:** output/messages_split/messages_part2.csv through messages_part8.csv (I'll provide them sequentially)
+**Current File:** output_kq3/messages_split/messages_part1.csv (200 rows)
+**Next Files:** output_kq3/messages_split/messages_part2.csv through messages_part9.csv (I'll provide them sequentially)
 
 **Example of what I need:**
 Input row: `0,1,"You splash around in the water for a while but seem to have forgotten how to swim. Unfortunately, you drown.",,`
 Output row: `0,1,"You splash around in the water for a while but seem to have forgotten how to swim. Unfortunately, you drown.","אתה מתיז במים לזמן מה אבל נראה ששכחת איך לשחות. למרבה הצער, אתה טובע.",`
 
-Please translate all the English messages in folder output/messages_split
+Please translate all the English messages in folder output_kq3/messages_split

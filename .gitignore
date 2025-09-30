@@ -1,7 +1,12 @@
 _pycache_
-output
+tools/__pycache__
+tools/*.pyc
+output_kq3/
+output_kq2/
+output*/messages_split
 kq*_clean
 kq*_work
+kq*_gog
 *.patch
 *.EXTENDED
 client_secret.json

@@ -9,7 +9,7 @@
 !include MUI2.nsh
 
 !define BACKUPDIR "SIERRA_ORIG_ENGLISH"
-!define UNINSTALLER_NAME "kq1_heb_uninsaller.exe"
+!define UNINSTALLER_NAME "kq1_heb_uninstaller.exe"
 
 !macro BackupAndUpdateFile FILE 
     IfFileExists "$INSTDIR\${BACKUPDIR}\*.*" +2
