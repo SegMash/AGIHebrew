@@ -118,9 +118,12 @@ def messages_import(srcdir, pattern, csvdir):
                 #    print("WARNING: space problems at ", entry)
                 #    print(f"  Original: '{entry['original']}' (has spaces: {original_has_spaces})")
                 #    print(f"  Translation: '{entry['translation']}' (has spaces: {translation_has_spaces})")
-                
+
+                #if full_filename != os.path.join(srcdir, "Logic167.lgc") or get_number(entry, 'idx') < 2:
                 logic = update_with_original(logic, get_number(entry, 'idx'), entry['original'], entry['translation'])
 
+        #print(f"Updated logic for {full_filename}")
+        #print(logic)
         with open(full_filename, 'w', encoding=config.encoding, newline='\n') as f:
             f.write(logic)
 

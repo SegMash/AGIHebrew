@@ -1,15 +1,7 @@
-﻿# In order to create the patches, run:
-#
-# "C:\Program Files (x86)\NSIS\Bin\GenPat.exe" C:\Zvika\Games\PoliceQuest\AGI.clean\OBJECT C:\Zvika\Games\PoliceQuest\AGI\OBJECT object.patch /r
-# "C:\Program Files (x86)\NSIS\Bin\GenPat.exe" C:\Zvika\Games\PoliceQuest\AGI.clean\LOGDIR C:\Zvika\Games\PoliceQuest\AGI\LOGDIR logdir.patch /r
-# "C:\Program Files (x86)\NSIS\Bin\GenPat.exe" C:\Zvika\Games\PoliceQuest\AGI.clean\VIEWDIR C:\Zvika\Games\PoliceQuest\AGI\VIEWDIR viewdir.patch /r
-# "C:\Program Files (x86)\NSIS\Bin\GenPat.exe" C:\Zvika\Games\PoliceQuest\AGI.clean\VOL.0 C:\Zvika\Games\PoliceQuest\AGI\VOL.0 VOL.0.patch /r
-# ...
-
-!include MUI2.nsh
+﻿!include MUI2.nsh
 
 !define BACKUPDIR "SIERRA_ORIG_ENGLISH"
-!define UNINSTALLER_NAME "kq1_heb_uninstaller.exe"
+!define UNINSTALLER_NAME "kq2_heb_uninstaller.exe"
 
 !macro BackupAndUpdateFile FILE 
     IfFileExists "$INSTDIR\${BACKUPDIR}\*.*" +2
@@ -24,9 +16,9 @@
         abort
 !macroend
 
-Name "התרגום העברי של KQ1"
+Name "התרגום העברי של KQ2"
 
-OutFile "kq1-hebrew-installer.exe"
+OutFile "kq2-hebrew-installer.exe"
 
 BrandingText "הרפתקה עברית"
  
@@ -35,11 +27,11 @@ Unicode true
 !define MUI_TEXT_WELCOME_INFO_TEXT "ברוכים הבאים.$\r$\n \
 $\r$\n \
 לפני שנמשיך, יש לוודא כי:$\r$\n$\r$\n  \
-• יש ברשותך עותק תקין של KQ1 בגרסה המקורית עם ממשק הקלדת פקודות (ניתן לקנות ב GoG)$\r$\n \
+• יש ברשותך עותק תקין של KQ2 בגרסה המקורית עם ממשק הקלדת פקודות (ניתן לקנות ב GoG)$\r$\n \
 • מותקנת גרסת Daily של ScummVM" ;" ; gvim get's confused without that extra "
 
 !define MUI_FINISHPAGE_TEXT  "ההתקנה הושלמה בהצלחה.$\r$\n$\r$\n \
-• כעת ניתן להוסיף את המשחק ל ScummVM, והוא יזוהה כ KQ1 בעברית.$\r$\n \
+• כעת ניתן להוסיף את המשחק ל ScummVM, והוא יזוהה כ KQ2 בעברית.$\r$\n \
 • על מנת לתת שמות בעברית למשחקים השמורים, יש להגדיר $\r$\n \
  Edit Game -> Engine -> Use original save/load screens $\r$\n \
 • אם התפריט בעברית: $\r$\n \
@@ -65,7 +57,7 @@ $\r$\n \
 !insertmacro MUI_LANGUAGE "Hebrew"
 
 ; The text to prompt the user to enter game's directory
-DirText "בחר את התיקייה שקבצי KQ1 נמצאים בה"
+DirText "בחר את התיקייה שקבצי KQ2 נמצאים בה"
 
 !include "VPatchLib.nsh"
 
@@ -80,9 +72,9 @@ Section "Update file"
 
     WriteUninstaller $INSTDIR\${UNINSTALLER_NAME}
 
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ1_Hebrew" \
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ2_Hebrew" \
                      "DisplayName" "PQ1 Hebrew translation"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ1_Hebrew" \
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ2_Hebrew" \
                      "UninstallString" "$INSTDIR\${UNINSTALLER_NAME}"
 
 
@@ -95,7 +87,6 @@ Section "Update file"
     !insertmacro BackupAndUpdateFile WORDS.TOK
     File WORDS.TOK.EXTENDED
     File agi-font-dos.bin
-    #File KQ1.WAG  #TODO remove this
 SectionEnd
 
 Section "Uninstall"
@@ -105,6 +96,6 @@ Section "Uninstall"
     CopyFiles "$INSTDIR\${BACKUPDIR}\*.*" $INSTDIR
     Rmdir /r "$INSTDIR\${BACKUPDIR}"
     Delete $INSTDIR\${UNINSTALLER_NAME}
-    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ1_Hebrew"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ2_Hebrew"
 SectionEnd
  

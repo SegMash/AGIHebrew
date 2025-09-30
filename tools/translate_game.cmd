@@ -110,11 +110,13 @@ if %ERRORLEVEL% neq 0 (
     echo ERROR: messages_import.py failed
     exit /b 1
 )
+
 python.exe .\tools\object_import.py "%WORK_DIR%" "%TRANSLATION_DIR%"
 if %ERRORLEVEL% neq 0 (
     echo ERROR: object_import.py failed
     exit /b 1
 )
+
 python.exe .\tools\words_import.py "%WORK_DIR%" "%TRANSLATION_DIR%"
 if %ERRORLEVEL% neq 0 (
     echo ERROR: words_import.py failed

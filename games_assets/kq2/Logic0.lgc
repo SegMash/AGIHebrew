@@ -1,0 +1,1524 @@
+[*********************************************************************
+[
+[ Logic0
+[
+[*********************************************************************
+#include "resourceids.txt"
+#include "reserved.txt"
+#include "globals.txt"
+
+if (isset(gameRestarted))
+    {
+    set(enableMenu);
+    disable.item(c31);
+    if (monitorType == MONO && 
+        machineType == PC)
+        {
+        goto(Label1);
+        }
+    clear.lines(22, 24, BLACK);
+    }
+Label1:
+if ((isset(gameRestored) || 
+    isset(gameRestarted)))
+    {
+    disable.item(c31);
+    }
+if (errorNumber > 0)
+    {
+    call(Logic98);
+    quit(1);
+    }
+v102 = v100;
+v103 = v101;
+get.posn(ego, v100, v101);
+if (isset(f50))
+    {
+    reset(f50);
+    set(f170);
+    disable.item(c18);
+    disable.item(c16);
+    disable.item(c2);
+    disable.item(c30);
+    disable.item(c22);
+    disable.item(c10);
+    disable.item(c11);
+    disable.item(c28);
+    disable.item(c27);
+    disable.item(c6);
+    disable.item(c29);
+    load.logics(Logic100);
+    }
+if (currentRoom == 0)
+    {
+    call(Logic180);
+    currentEgoView = 0;
+    script.size(60);
+    if (isset(gameRestarted))
+        {
+        set(enableMenu);
+        disable.item(c31);
+        new.room(Logic1);
+        }
+        else
+        {
+        set.menu(m150);
+        set.menu.item(m151, c26);
+        set.menu.item(m152, c1);
+        set.menu(m153);
+        set.menu.item(m154, c18);
+        set.menu.item(m155, c19);
+        set.menu.item(m156, c31);
+        set.menu.item(m157, c20);
+        set.menu.item(m158, c21);
+        set.menu(m159);
+        set.menu.item(m160, c22);
+        set.menu.item(m161, c30);
+        set.menu.item(m162, c12);
+        set.menu(m163);
+        set.menu.item(m164, c2);
+        if (machineType == PC && 
+            monitorType != EGA && 
+            monitorType != MONO)
+            {
+            set.menu.item(m165, c11);
+            }
+        set.menu.item(m166, c10);
+        set.menu.item(m167, c16);
+        if (machineType != AMIGA)
+            {
+            set.menu(m168);
+            set.menu.item(m169, c28);
+            set.menu.item(m170, c29);
+            set.menu.item(m171, c27);
+            set.menu.item(m172, c6);
+            }
+        submit.menu();
+        disable.item(c31);
+        new.room(Logic97);
+        }
+    }
+if (isset(newRoom))
+    {
+    reset(f149);
+    observe.objs(ego);
+    stop.sound();
+    v88 = 0;
+    reset(f130);
+    reset(f115);
+    reset(f64);
+    reset(f128);
+    reset(f132);
+    reset(f127);
+    v76 = 30;
+Label2:
+    *v76 = 0;
+    reset.v(v76);
+    if (v76 < 49)
+        {
+        ++v76;
+        goto(Label2);
+        }
+        else
+        {
+        v76 = 230;
+Label3:
+        *v76 = 0;
+        reset.v(v76);
+        if (v76 < 249)
+            {
+            ++v76;
+            goto(Label3);
+            }
+        }
+    v58 = 0;
+    v59 = 0;
+    v69 = 0;
+    v70 = 0;
+    v71 = 0;
+    v82 = 0;
+    v94 = 0;
+    reset(f161);
+    set(f55);
+    if ((currentRoom == 35 || 
+        currentRoom == 7 || 
+        currentRoom == 42 || 
+        currentRoom == 41 || 
+        currentRoom == 48 || 
+        currentRoom == 49 || 
+        currentRoom == 55 || 
+        currentRoom == 56 || 
+        currentRoom == 57))
+        {
+        load.sound(Sound29);
+        }
+    if ((currentRoom == 39 || 
+        currentRoom == 40 || 
+        currentRoom == 46 || 
+        currentRoom == 47 || 
+        currentRoom == 30 || 
+        currentRoom == 31 || 
+        currentRoom == 37 || 
+        currentRoom == 38 || 
+        currentRoom == 44 || 
+        currentRoom == 45 || 
+        currentRoom == 19 || 
+        currentRoom == 20 || 
+        currentRoom == 21 || 
+        currentRoom == 26 || 
+        currentRoom == 27 || 
+        currentRoom == 28))
+        {
+        load.sound(Sound5);
+        }
+    if (currentRoom < 60)
+        {
+        load.sound(Sound8);
+        }
+    if (isset(f161))
+        {
+        load.logics(Logic99);
+        }
+    animate.obj(ego);
+    load.view(View0);
+    load.view.v(currentEgoView);
+    set.view.v(ego, currentEgoView);
+    }
+if (said("tester"))
+    {
+    toggle(f178);
+    if (monitorType == MONO && 
+        machineType == PC)
+        {
+        goto(Label4);
+        }
+    clear.lines(22, 24, BLACK);
+    }
+Label4:
+if (isset(f178))
+    {
+    get.posn(ego, v112, v113);
+    display(24, 16, m20);
+    }
+if (v100 == v102 && 
+    v101 == v103 && 
+    egoDir == v99)
+    {
+    stop.cycling(ego);
+    }
+    else
+    {
+    start.cycling(ego);
+    }
+if (egoDir == STOPPED)
+    {
+    stop.cycling(ego);
+    }
+if (isset(f92))
+    {
+    start.cycling(ego);
+    }
+v99 = egoDir;
+if (!isset(f189) && 
+    currentRoom != 110 && 
+    currentRoom != 97)
+    {
+    if (controller(c15))
+        {
+        menu.input();
+        }
+    if ((said("rescue") || 
+        controller(c18)))
+        {
+        stop.sound();
+        save.game();
+        }
+    if (!isset(f170))
+        {
+        if ((said("restore") || 
+            controller(c19)))
+            {
+            stop.sound();
+            restore.game();
+            }
+        if ((said("restart") || 
+            controller(c20)))
+            {
+            stop.sound();
+            restart.game();
+            }
+        if ((said("status") || 
+            controller(c12)))
+            {
+            status();
+            }
+        if (controller(c30))
+            {
+            set(enableItemSelect);
+            status();
+            if (selectedItem > 0 && 
+                selectedItem != 255)
+                {
+                v94 = selectedItem;
+                v94  += 151;
+                if (v94 == 229)
+                    {
+                    if (isset(f106))
+                        {
+                        show.obj(View229);
+                        }
+                        else
+                        {
+                        show.obj(View165);
+                        }
+                    }
+                    else
+                    {
+                    show.obj.v(v94);
+                    }
+                }
+            reset(enableItemSelect);
+            }
+        if ((controller(c1) || 
+            said("aid") || 
+            said("aid", "<null words>")))
+            {
+            call(Logic95);
+            }
+        }
+    if ((controller(c16) || 
+        said("pause")))
+        {
+        pause();
+        }
+    if (controller(c26))
+        {
+        print(m173);
+        }
+    if (controller(c3))
+        {
+        echo.line();
+        }
+    if (controller(c9))
+        {
+        cancel.line();
+        }
+    if (controller(c10))
+        {
+        init.joy();
+        }
+    if (controller(c11))
+        {
+        toggle.monitor();
+        }
+    if ((controller(c21) || 
+        said("quit")))
+        {
+        stop.sound();
+        if (isset(f161))
+            {
+            quit(1);
+            }
+            else
+            {
+            quit(0);
+            }
+        }
+    }
+if (controller(c2))
+    {
+    toggle(soundOn);
+    }
+if (controller(c24))
+    {
+    --attenuation;
+    }
+if (controller(c25))
+    {
+    if (attenuation < 15)
+        {
+        ++attenuation;
+        }
+    }
+if ((said("fast", "speak") || 
+    controller(c13)))
+    {
+    print(m101);
+    version();
+    if (!isset(f161))
+        {
+        load.logics(Logic99);
+        set(f161);
+        }
+    }
+if ((said("fastest") || 
+    controller(c6)))
+    {
+    animationInterval = 0;
+    }
+if ((said("fast") || 
+    controller(c27)))
+    {
+    animationInterval = 1;
+    }
+if ((said("normal") || 
+    controller(c28)))
+    {
+    animationInterval = 2;
+    }
+if ((said("slow") || 
+    controller(c29)))
+    {
+    animationInterval = 4;
+    }
+if (!isset(f170))
+    {
+    call.v(currentRoom);
+    }
+    else
+    {
+    call(Logic100);
+    }
+if (isset(f161))
+    {
+    call(Logic99);
+    }
+--v55;
+if (v55 == 0 && 
+    v57 == 1)
+    {
+    print(m82);
+    }
+if (v55 == 0 && 
+    v57 > 0)
+    {
+    --v57;
+    if (v57 != 0)
+        {
+        v55 = 250;
+        }
+    }
+--v54;
+if (v54 == 0)
+    {
+    --v66;
+    if (v66 == 1)
+        {
+        if (currentRoom < 97)
+            {
+            print(m17);
+            }
+        }
+        else
+        {
+        if (v66 != 0)
+            {
+            v54 = 250;
+            }
+        }
+    }
+if (isset(f131))
+    {
+    reset(f92);
+    reset(f131);
+    reset(f147);
+    observe.horizon(ego);
+    release.priority(ego);
+    set(f107);
+    new.room(Logic105);
+    }
+--v88;
+if (v88 == 1)
+    {
+    player.control();
+    set.view(ego, View0);
+    reposition.to.v(ego, v114, v115);
+    reset(f92);
+    if (currentRoom == 20)
+        {
+        observe.blocks(ego);
+        }
+    if (v87 == 1)
+        {
+        print(m88);
+        }
+    if (v87 == 2)
+        {
+        print(m89);
+        }
+    if (v87 == 3)
+        {
+        print(m90);
+        print(m93);
+        }
+    if (currentRoom == 5)
+        {
+        reset(f177);
+        }
+    }
+if (isset(f63))
+    {
+    reset(f63);
+    v88 = 70;
+    sound(Sound8, f169);
+    }
+if (isset(f148))
+    {
+    ignore.objs(ego);
+    }
+if (!isset(haveInput))
+    {
+    goto(Label7);
+    }
+if (said("acquire", "bouquet") && 
+    currentRoom != 2 && 
+    currentRoom != 3 && 
+    currentRoom != 4 && 
+    currentRoom != 9 && 
+    currentRoom != 10 && 
+    currentRoom != 16)
+    {
+    if (!has(i52))
+        {
+        print(m2);
+        }
+        else
+        {
+        print(m10);
+        }
+    }
+if (said("thank", "<any word>"))
+    {
+    print(m40);
+    }
+if (said("smell", "bouquet"))
+    {
+    if (has(i52))
+        {
+        print(m4);
+        }
+        else
+        {
+        print(m24);
+        }
+    }
+if (said("consume", "basket"))
+    {
+    if (has(i63))
+        {
+        print(m8);
+        currentScore -= 2;
+        drop(i63);
+        get(i62);
+        }
+        else
+        {
+        if (has(i62))
+            {
+            print(m9);
+            }
+            else
+            {
+            print(m24);
+            }
+        }
+    }
+if (currentRoom != 3 && 
+    said("acquire", "basket"))
+    {
+    if (has(i62))
+        {
+        print(m9);
+        }
+        else
+        {
+        reset(haveMatch);
+        }
+    }
+if (currentRoom != 51)
+    {
+    if ((said("point", "rusty trident") || 
+        said("wave", "rusty trident")))
+        {
+        print(m95);
+        }
+    }
+if (said("use", "<any word>"))
+    {
+    print(m6);
+    }
+if (said("who", "programmed", "game"))
+    {
+    print(m18);
+    }
+if (said("what is", "graham", "last name"))
+    {
+    print(m19);
+    }
+if ((said("acquire", "boulder") || 
+    said("move", "boulder") || 
+    said("move", "boulder") || 
+    said("move", "boulder")))
+    {
+    print(m22);
+    }
+if (said("dive", "<any word>"))
+    {
+    if (v95 > 0)
+        {
+        print(m27);
+        }
+        else
+        {
+        print(m28);
+        }
+    }
+if (said("play", "<any word>"))
+    {
+    print(m29);
+    }
+if (currentRoom > 49 && 
+    (currentRoom < 55 || 
+    currentRoom > 58))
+    {
+    goto(Label5);
+    }
+if (!has(i72))
+    {
+    goto(Label5);
+    }
+if (said("pat", "lamp"))
+    {
+    if ((v95 > 0 || 
+        isset(f180) || 
+        isset(f119) || 
+        isset(f125) || 
+        isset(f176) || 
+        isset(onWater) || 
+        isset(f92) || 
+        isset(f148) || 
+        isset(f179) || 
+        isset(f127) || 
+        isset(f132) || 
+        isset(f128) || 
+        !isset(f55) || 
+        v88 != 0))
+        {
+        print(m91);
+        goto(Label5);
+        }
+        else
+        {
+        if (currentRoom == 20)
+            {
+            ignore.blocks(ego);
+            }
+        if (currentRoom == 5)
+            {
+            set(f177);
+            }
+        program.control();
+        get.posn(ego, v114, v115);
+        set.view(ego, View65);
+        set.cel(ego, 0);
+        set(f92);
+        end.of.loop(ego, f63);
+        if (v87 == 0)
+            {
+            get(i76);
+            currentScore  += 2;
+            v87 = 1;
+            }
+            else
+            {
+            if (v87 == 1)
+                {
+                get(i50);
+                currentScore  += 2;
+                v87 = 2;
+                }
+                else
+                {
+                get(i77);
+                currentScore  += 2;
+                drop(i72);
+                v87 = 3;
+                }
+            }
+        }
+    }
+Label5:
+if (!isset(haveMatch) && 
+    !has(i72) && 
+    said("pat", "lamp"))
+    {
+    print(m24);
+    }
+if (has(i59) && 
+    said("put on", "brooch"))
+    {
+    print(m14);
+    }
+if (currentRoom != 67 && 
+    (said("hammer", "hammer") || 
+    said("pound", "hammer")))
+    {
+    print(m13);
+    }
+if (has(i63) && 
+    said("acquire", "basket"))
+    {
+    print(m41);
+    }
+if (has(i81) && 
+    !isset(f170) && 
+    !isset(f184))
+    {
+    if (said("pat", "amulet"))
+        {
+        print(m84);
+        }
+        else
+        {
+        if (said("wave", "amulet"))
+            {
+            print(m85);
+            }
+            else
+            {
+            if ((said("home", "<any word>") || 
+                said("<any word>", "home") || 
+                said("home")))
+                {
+                drop(i81);
+                print(m86);
+                if (currentRoom == 90)
+                    {
+                    currentScore  += 3;
+                    new.room(Logic107);
+                    }
+                    else
+                    {
+                    new.room(Logic106);
+                    }
+                }
+            }
+        }
+    }
+if ((has(i64) || 
+    has(i65)))
+    {
+    if (said("open", "bottle"))
+        {
+        print(m32);
+        }
+    }
+if (has(i64) && 
+    said("acquire", "cloth"))
+    {
+    print(m33);
+    get(i65);
+    currentScore  += 2;
+    get(i73);
+    drop(i64);
+    }
+if (has(i79) && 
+    said("consume", "cube"))
+    {
+    print(m36);
+    drop(i79);
+    if (!isset(f157))
+        {
+        currentScore  += 1;
+        set(f157);
+        }
+    v54 = 0;
+    v66 = 75;
+    }
+if (said("light", "candle"))
+    {
+    if (isset(f106))
+        {
+        print(m43);
+        }
+        else
+        {
+        if (!has(i78))
+            {
+            print(m24);
+            }
+            else
+            {
+            if (currentRoom != 60 && 
+                currentRoom != 61 && 
+                currentRoom != 63 && 
+                currentRoom != 74)
+                {
+                print(m44);
+                }
+                else
+                {
+                reset(haveMatch);
+                }
+            }
+        }
+    }
+if (isset(f106) && 
+    has(i78) && 
+    said("blow", "candle"))
+    {
+    print(m45);
+    reset(f106);
+    }
+if (has(i56) && 
+    said("put on", "diamond and sapphire tiara"))
+    {
+    print(m47);
+    }
+if (has(i66) && 
+    said("consume", "ham"))
+    {
+    print(m49);
+    drop(i66);
+    }
+if ((said("look in", "basket") || 
+    said("open", "basket")))
+    {
+    if (has(i63))
+        {
+        print(m96);
+        }
+        else
+        {
+        if (has(i62))
+            {
+            print(m97);
+            }
+            else
+            {
+            reset(haveMatch);
+            }
+        }
+    }
+if (has(i55) && 
+    said("put on", "ring"))
+    {
+    if (!isset(f68))
+        {
+        if (!isset(f160))
+            {
+            if (isset(f70))
+                {
+                set(f160);
+                currentScore  += 3;
+                }
+            }
+        print(m56);
+        set(f68);
+        }
+        else
+        {
+            print(m174);
+        }
+    }
+if (isset(f68) && 
+    said("remove", "ring"))
+    {
+    reset(f68);
+    print(m39);
+    }
+if (has(i53) && 
+    said("put on", "bracelet"))
+    {
+    print(m59);
+    }
+if (has(i57) && 
+    said("put on", "diamond and sapphire necklace"))
+    {
+    print(m38);
+    }
+if (has(i72))
+    {
+    if (said("look in", "lamp"))
+        {
+        print(m31);
+        }
+        else
+        {
+        if (said("light", "lamp"))
+            {
+            print(m64);
+            }
+        }
+    }
+if (v88 <= 0 && 
+    !isset(f151) && 
+    currentRoom < 50 && 
+    !isset(f179) && 
+    !isset(f119) && 
+    !isset(f180) && 
+    !isset(f125) && 
+    !isset(f176) && 
+    !isset(onWater) && 
+    !isset(f92) && 
+    !isset(f148) && 
+    isset(f55) && 
+    has(i76) && 
+    v95 <= 0 && 
+    (said("get on", "carpet") || 
+    said("fly", "carpet")))
+    {
+    set.priority(ego, 15);
+    set(f147);
+    set.view(ego, View98);
+    v94 = 2;
+    cycle.time(ego, v94);
+    step.size(ego, v94);
+    ignore.horizon(ego);
+    get.posn(ego, v89, v90);
+    v90 = 30;
+    set(f148);
+    v94 = 0;
+    move.obj.v(ego, v89, v90, v94, f131);
+    set(f92);
+    currentScore  += 4;
+    set(f151);
+    reset(f127);
+    reset(f132);
+    reset(f128);
+    }
+if (currentRoom < 50 && 
+    currentRoom != 18 && 
+    has(i76) && 
+    said("sit", "carpet"))
+    {
+    print(m34);
+    }
+if (has(i77) && 
+    said("put on", "bridle"))
+    {
+    print(m68);
+    }
+if (has(i70) && 
+    said("open", "bird cage"))
+    {
+    print(m69);
+    drop(i70);
+    currentScore -= 2;
+    get(i71);
+    }
+if (has(i68) && 
+    said("put on", "black cape"))
+    {
+    if (!isset(f70))
+        {
+        print(m72);
+        if (!isset(f160))
+            {
+            if (isset(f68))
+                {
+                set(f160);
+                currentScore  += 3;
+                }
+            }
+        set(f70);
+        }
+        else
+        {
+        print(m30);
+        }
+    }
+if (isset(f70) && 
+    said("remove", "black cape"))
+    {
+    print(m39);
+    reset(f70);
+    }
+if (has(i69) && 
+    said("put on", "cross"))
+    {
+    if (!isset(f69))
+        {
+        print(m74);
+        if (!isset(f159))
+            {
+            currentScore  += 2;
+            set(f159);
+            }
+        set(f69);
+        }
+        else
+        {
+            print(m174);
+        }
+    }
+if (isset(f69) && 
+    said("remove", "cross"))
+    {
+    reset(f69);
+    print(m39);
+    }
+if (has(i67) && 
+    (said("consume", "broth") || 
+    said("drink", "broth")))
+    {
+    print(m76);
+    drop(i67);
+    }
+if (has(i58) && 
+    said("put on", "earrings"))
+    {
+    print(m78);
+    }
+if ((said("check out", "<any word>") || 
+    said("check out", "<any word>", "<any word>")))
+    {
+    reset(haveMatch);
+    if (isset(f162))
+        {
+        goto(Label6);
+        }
+        else
+        {
+        if (currentRoom == 67 && 
+            v92 != 0 && 
+            v92 != 2 && 
+            v92 != 4)
+            {
+            goto(Label6);
+            }
+        }
+    }
+    else
+    {
+    goto(Label6);
+    }
+if (said("check out", "boulder") && 
+    currentRoom != 15 && 
+    currentRoom != 13 && 
+    currentRoom != 58 && 
+    currentRoom != 75 && 
+    currentRoom != 80 && 
+    currentRoom != 85 && 
+    (currentRoom < 77 || 
+    currentRoom > 93))
+    {
+    print(m21);
+    }
+if (has(i81) && 
+    (said("check out", "amulet") || 
+    said("read", "amulet")))
+    {
+    show.obj(View232);
+    }
+if (has(i64) && 
+    (said("check out", "bottle") || 
+    said("look in", "bottle")))
+    {
+    show.obj(View215);
+    }
+if (has(i65) && 
+    (said("check out", "bottle") || 
+    said("look in", "bottle") || 
+    said("check out", "empty", "bottle")))
+    {
+    show.obj(View216);
+    }
+if (has(i73) && 
+    said("check out", "cloth"))
+    {
+    show.obj(View224);
+    }
+if (has(i79) && 
+    (said("check out", "cube") || 
+    said("check out", "cube", "cube")))
+    {
+    show.obj(View230);
+    }
+if (has(i61) && 
+    has(i83))
+    {
+    if (said("check out", "key"))
+        {
+        print(m98);
+        }
+    }
+if (has(i61))
+    {
+    if ((said("check out", "gold", "key") || 
+        said("check out", "key")))
+        {
+        show.obj(View212);
+        }
+    }
+if (has(i83))
+    {
+    if ((said("check out", "silver", "key") || 
+        said("check out", "key")))
+        {
+        show.obj(View234);
+        }
+    }
+if (has(i78) && 
+    said("check out", "candle"))
+    {
+    if (isset(f106))
+        {
+        show.obj(View229);
+        }
+        else
+        {
+        show.obj(View165);
+        }
+    }
+if (has(i56) && 
+    said("check out", "diamond and sapphire tiara"))
+    {
+    show.obj(View207);
+    }
+if (has(i66) && 
+    said("check out", "ham"))
+    {
+    show.obj(View217);
+    }
+if (has(i74) && 
+    said("check out", "cushion"))
+    {
+    show.obj(View225);
+    }
+if (has(i52) && 
+    (said("check out", "bouquet") || 
+    said("check out", "bouquet", "blossom")))
+    {
+    show.obj(View203);
+    }
+if (has(i63) && 
+    (said("check out", "basket") || 
+    said("check out", "basket", "basket")))
+    {
+    show.obj(View214);
+    }
+if (has(i62) && 
+    (said("check out", "basket") || 
+    said("check out", "empty", "basket")))
+    {
+    show.obj(View213);
+    }
+if (has(i55) && 
+    said("check out", "ring"))
+    {
+    show.obj(View206);
+    }
+if (currentRoom != 51)
+    {
+    if (has(i82) && 
+        (said("check out", "clam") || 
+        said("check out", "clam")))
+        {
+        show.obj(View233);
+        }
+    }
+if (has(i53) && 
+    said("check out", "bracelet"))
+    {
+    show.obj(View204);
+    }
+if (has(i51) && 
+    said("check out", "rusty trident"))
+    {
+    show.obj(View202);
+    }
+if (has(i57) && 
+    said("check out", "diamond and sapphire necklace"))
+    {
+    show.obj(View208);
+    }
+if (has(i60) && 
+    said("check out", "hammer"))
+    {
+    show.obj(View211);
+    }
+if (has(i72) && 
+    said("check out", "lamp"))
+    {
+    show.obj(View223);
+    }
+if (currentRoom != 70 && 
+    has(i76) && 
+    said("check out", "carpet"))
+    {
+    show.obj(View227);
+    }
+if (has(i50) && 
+    said("check out", "knife"))
+    {
+    show.obj(View201);
+    }
+if (has(i77) && 
+    said("check out", "bridle"))
+    {
+    show.obj(View228);
+    }
+if ((said("check out", "bird") || 
+    said("check out", "empty", "bird cage") || 
+    said("check out", "bird cage")))
+    {
+    if (has(i71))
+        {
+        show.obj(View222);
+        }
+        else
+        {
+        if (has(i70))
+            {
+            if (v65 == 2)
+                {
+                print(m35);
+                }
+                else
+                {
+                if (!isset(f149))
+                    {
+                    load.sound(Sound22);
+                    set(f149);
+                    }
+                sound(Sound22, f169);
+                show.obj(View221);
+                }
+            }
+            else
+            {
+            reset(haveMatch);
+            }
+        }
+    }
+if (has(i68) && 
+    said("check out", "black cape"))
+    {
+    show.obj(View219);
+    }
+if (has(i69) && 
+    said("check out", "cross"))
+    {
+    show.obj(View220);
+    }
+if (has(i67))
+    {
+    if (said("check out", "broth"))
+        {
+        show.obj(View218);
+        }
+        else
+        {
+        if (said("check out", "cauldron") && 
+            currentRoom != 69)
+            {
+            show.obj(View218);
+            }
+        }
+    }
+if (has(i58) && 
+    said("check out", "earrings"))
+    {
+    show.obj(View209);
+    }
+if (has(i75) && 
+    said("check out", "fishing net"))
+    {
+    show.obj(View226);
+    }
+if (has(i80) && 
+    said("check out", "dolphin"))
+    {
+    show.obj(View231);
+    }
+if (has(i59) && 
+    said("check out", "brooch"))
+    {
+    show.obj(View210);
+    }
+if (has(i54) && 
+    said("check out", "pole"))
+    {
+    show.obj(View205);
+    }
+Label6:
+if ((said("check out", "knife") || 
+    said("check out", "rusty trident") || 
+    said("check out", "bouquet") || 
+    said("check out", "bracelet") || 
+    said("check out", "pole") || 
+    said("check out", "ring") || 
+    said("check out", "diamond and sapphire tiara") || 
+    said("check out", "diamond and sapphire necklace") || 
+    said("check out", "earrings") || 
+    said("check out", "brooch") || 
+    said("check out", "hammer") || 
+    said("check out", "key") || 
+    said("check out", "gold") || 
+    said("check out", "silver") || 
+    said("check out", "basket") || 
+    said("check out", "bottle") || 
+    said("check out", "ham") || 
+    said("check out", "broth") || 
+    said("check out", "black cape") || 
+    said("check out", "cross") || 
+    said("check out", "bird cage") || 
+    said("check out", "lamp") || 
+    said("check out", "cloth") || 
+    said("check out", "cushion") || 
+    said("check out", "fishing net") || 
+    said("check out", "carpet") || 
+    said("check out", "bridle") || 
+    said("check out", "candle") || 
+    said("check out", "cube") || 
+    said("check out", "dolphin") || 
+    said("check out", "amulet") || 
+    said("check out", "clam") || 
+    said("check out", "bird")))
+    {
+    print(m133);
+    }
+    else
+    {
+    if (unknownWordNum <= 0 && 
+        (said("check out", "<any word>") || 
+        said("look in", "<any word>")))
+        {
+        print(m121);
+        }
+    }
+if (said("acquire", "<any word>") && 
+    !said("acquire"))
+    {
+    print(m122);
+    }
+if (said("drop", "<any word>"))
+    {
+    print(m123);
+    }
+if (said("consume", "<any word>"))
+    {
+    if ((said("consume", "count dracula") || 
+        said("consume", "bitch")))
+        {
+        print(m141);
+        }
+        else
+        {
+        if ((said("consume", "cube") || 
+            said("consume", "basket")))
+            {
+            print(m133);
+            }
+            else
+            {
+            print(m124);
+            }
+        }
+    }
+if (said("acquire"))
+    {
+    print(m143);
+    }
+if (said("climb", "<any word>"))
+    {
+    print(m125);
+    }
+if (said("enter", "<any word>"))
+    {
+    print(m126);
+    }
+if (said("feed", "<any word>"))
+    {
+    print(m127);
+    }
+if (said("hello", "<any word>"))
+    {
+    print(m128);
+    }
+if ((said("say", "hello") || 
+    said("hello")))
+    {
+    print(m138);
+    }
+    else
+    {
+    if (said("say", "<any word>"))
+        {
+        print(m129);
+        }
+    }
+if (said("find", "count dracula"))
+    {
+    print(m130);
+    }
+    else
+    {
+    if (said("find", "bitch"))
+        {
+        print(m131);
+        }
+        else
+        {
+        if (said("find", "<any word>"))
+            {
+            print(m132);
+            }
+        }
+    }
+if (said("get on", "<any word>"))
+    {
+    print(m148);
+    }
+if (said("speak", "<any word>"))
+    {
+    print(m144);
+    }
+if (isset(haveInput) && 
+    !isset(haveMatch) && 
+    unknownWordNum > 0)
+    {
+    reset(haveInput);
+    if (unknownWordNum == 1)
+        {
+        print(m145);
+        }
+    if (unknownWordNum == 2)
+        {
+        print(m146);
+        }
+    if (unknownWordNum == 3)
+        {
+        print(m147);
+        }
+    }
+if (isset(haveInput) && 
+    !isset(haveMatch))
+    {
+    random(139, 141, v94);
+    print.v(v94);
+    reset(haveInput);
+    }
+Label7:
+if (isset(f148))
+    {
+    ignore.objs(ego);
+    }
+return();
+
+[ DECLARED MESSAGES
+#message 1 "I don't understand \"%w1\""
+#message 2 "Where do you think it could be?"
+#message 3 "The bouquet of wildflowers is very pretty. The sweet scent is delightful."
+#message 4 "The bouquet of flowers is very fragrant."
+#message 6 "What do you wish to do with it???"
+#message 7 "There are many good things to eat in the basket of goodies."
+#message 8 "Yum, yum. The snacks from the goody basket are sure tasty."
+#message 9 "The basket of goodies is empty because you ate all of it."
+#message 10 "You already have it."
+#message 11 "This is a poisoned lake! Too bad, you die of extreme poisoning."
+#message 12 "You need to be closer to the water if you want to swim."
+#message 13 "You look around but see that there is no reason to use a mallet just now."
+#message 14 "The color of the brooch clashes with your outfit. Better leave it off."
+#message 17 "You feel a sudden tingling sensation. Could it be that the effects of the sugar cube have worn off?"
+#message 18 "Ken, Roberta, Sol, Jeff, Chris, Doug, Mark, Al, Scott and Dale."
+#message 19 "Cracker."
+#message 20 "%v112,%v113    "
+#message 21 "The rocks are the usual sort of rocks, nothing special."
+#message 22 "The rocks are too large and heavy."
+#message 24 "You are not carrying it."
+#message 25 "There is no reason to drop it."
+#message 26 "You are already swimming."
+#message 27 "The water is very deep here. Without aid, it is impossible to swim under the water for any length of time."
+#message 28 "You need to be in the water to try that."
+#message 29 "You have better things to do than to play all day."
+#message 30 "You're already wearing it."
+#message 31 "The old oil lamp is empty inside."
+#message 32 "The glass bottle is already open."
+#message 33 "You pull a large piece of cloth out of the bottle."
+#message 34 "If you wish to ride on the magic carpet, then just say so."
+#message 35 "The cage is covered."
+#message 36 "After swallowing the magic sugar cube, you get a feeling of invincibility."
+#message 38 "You try to place it around your neck, but it doesn't fit."
+#message 39 "OK."
+#message 40 "You're welcome!"
+#message 41 "You already have the goodies. They are right in the basket!"
+#message 43 "The candle is already lit."
+#message 44 "There is no way for you to light the candle."
+#message 45 "You pucker up your lips and blow out the candle."
+#message 47 "The tiara would better fit a daintier head than yours."
+#message 49 "Mmmmmm! The smoked ham was delicious! It sure hit the spot."
+#message 56 "You are now wearing the beautiful ruby ring."
+#message 59 "The glittering bracelet is too small for your wrist."
+#message 64 "The oil lamp is empty. You cannot light it."
+#message 68 "You put the bridle over your head. Nothing happens. Don't you feel silly?"
+#message 69 "You open the pretty birdcage and the nightingale swoops out. The bird is gone. You have nothing but an empty birdcage."
+#message 72 "With a flourish, you fling the black cloak around your neck and fasten it."
+#message 74 "You place the silver cross and chain around your neck and wear it as a necklace."
+#message 76 "Hungrily, you eat the tasty chicken soup. Aaaaahhhh! You feel very satisfied. You throw away the useless empty pot."
+#message 78 "The earrings were made for more delicate ears than yours."
+#message 82 "Beware! The fairy's spell has worn off."
+#message 84 "You rub the Tiger's Eye stone on the front of the amulet, but nothing happens."
+#message 85 "You wave the bronze amulet in the air, but nothing happens."
+#message 86 "You murmur the word home. A tingling sensation envelops your body. You black out for a second ... when you come to, you see you are somewhere else!"
+#message 88 "When you rub the tarnished brass lamp, you hear a POOOOFF and a genie appears! \"Master,\" he says, \"I leave a gift for you. A magic carpet!\" The genie then poofs back into the lamp."
+#message 89 "When you rub the lamp, you hear a loud POOOOFF and a genie magically appears. \"Master,\" he says, \"I leave a gift for you. A beautiful sword!\" The genie then disappears in a puff of smoke."
+#message 90 "Using your sleeve as a cloth you rub the lamp, causing the genie to appear again. \"Master,\" he says, \"I leave a gift for you. A leather bridle!\" The genie then pops back into the lamp."
+#message 91 "Nothing happens."
+#message 92 "You have two keys! Do you wish to look at the silver one or the gold one?"
+#message 93 "Oh, no! The lamp has disappeared from your hands!"
+#message 95 "With disappointment, you see that nothing happens."
+#message 96 "You look in the basket of goodies and see many good things to eat: cookies, fruit, crackers, and sandwiches."
+#message 97 "The basket of goodies is empty because you ate all of it."
+#message 98 "You'll have to specify which key you wish to look at."
+#message 101 "%s4"
+#message 116 "Exit Game? (Y/N) "
+#message 121 "You see nothing special."
+#message 122 "You cannot get the %w2. At least not now!"
+#message 123 "There is no reason to do that."
+#message 124 "The %w2 doesn't appeal just now."
+#message 125 "No. That would just waste time."
+#message 126 "You can try to go there."
+#message 127 "That would be inappropriate at this time."
+#message 128 "Hello."
+#message 129 "OK. %w2."
+#message 130 "You will have to find him yourself."
+#message 131 "You will have to find her yourself."
+#message 132 "You will have to find it yourself."
+#message 133 "You are not carrying it."
+#message 138 "There is nobody here but you!"
+#message 139 "You can't do that--at least not now!"
+#message 140 "Not right now!"
+#message 141 "You can't do that."
+#message 143 "Just say what you wish to get."
+#message 144 "You get no response from the %w2."
+#message 145 "I don't understand \"%w1\""
+#message 146 "I don't understand \"%w2\""
+#message 147 "I don't understand \"%w3\""
+#message 148 "You're not able to ride the %w2 at this time."
+#message 150 "Sierra"
+#message 151 "About KQ2"
+#message 152 "Help     "
+#message 153 "File"
+#message 154 "Save     <F5>"
+#message 155 "Restore  <F7>"
+#message 156 "-------------"
+#message 157 "Restart  <F9>"
+#message 158 "Quit  <Alt-Z>"
+#message 159 "Action"
+#message 160 "Swim           ="
+#message 161 "See Object  <F4>"
+#message 162 "Inventory  <Tab>"
+#message 163 "Special"
+#message 164 "Sound On/Off  <F2>"
+#message 165 "Color/BW  <Ctrl R>"
+#message 166 "Joystick  <Ctrl J>"
+#message 167 "Pause        <Esc>"
+#message 168 "Speed"
+#message 169 "Normal "
+#message 170 "Slow   "
+#message 171 "Fast   "
+#message 172 "Fastest"
+#message 173 "King's Quest was designed by Roberta Williams."
+#message 174 "אתה כבר עונד את זה."
