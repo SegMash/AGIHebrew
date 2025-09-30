@@ -2,7 +2,6 @@ _pycache_
 tools/__pycache__
 tools/*.pyc
 output_kq3/
-output_kq2/
 output*/messages_split
 kq*_clean
 kq*_work
