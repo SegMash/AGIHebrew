@@ -1,0 +1,592 @@
+room_number,said_tokens
+0,<any word> home
+0,acquire
+0,acquire <any word>
+0,acquire basket
+0,acquire boulder
+0,acquire bouquet
+0,acquire cloth
+0,aid
+0,aid <null words>
+0,blow candle
+0,check out <any word>
+0,check out <any word> <any word>
+0,check out amulet
+0,check out basket
+0,check out basket basket
+0,check out bird
+0,check out bird cage
+0,check out black cape
+0,check out bottle
+0,check out boulder
+0,check out bouquet
+0,check out bouquet blossom
+0,check out bracelet
+0,check out bridle
+0,check out brooch
+0,check out broth
+0,check out candle
+0,check out carpet
+0,check out cauldron
+0,check out clam
+0,check out cloth
+0,check out cross
+0,check out cube
+0,check out cube cube
+0,check out cushion
+0,check out diamond and sapphire necklace
+0,check out diamond and sapphire tiara
+0,check out dolphin
+0,check out earrings
+0,check out empty basket
+0,check out empty bird cage
+0,check out empty bottle
+0,check out fishing net
+0,check out gold
+0,check out gold key
+0,check out ham
+0,check out hammer
+0,check out key
+0,check out knife
+0,check out lamp
+0,check out pole
+0,check out ring
+0,check out rusty trident
+0,check out silver
+0,check out silver key
+0,climb <any word>
+0,consume <any word>
+0,consume basket
+0,consume bitch
+0,consume broth
+0,consume count dracula
+0,consume cube
+0,consume ham
+0,dive <any word>
+0,drink broth
+0,drop <any word>
+0,enter <any word>
+0,fast
+0,fast speak
+0,fastest
+0,feed <any word>
+0,find <any word>
+0,find bitch
+0,find count dracula
+0,fly carpet
+0,get on <any word>
+0,get on carpet
+0,hammer hammer
+0,hello
+0,hello <any word>
+0,home
+0,home <any word>
+0,light candle
+0,light lamp
+0,look in <any word>
+0,look in basket
+0,look in bottle
+0,look in lamp
+0,move boulder
+0,normal
+0,open basket
+0,open bird cage
+0,open bottle
+0,pat amulet
+0,pat lamp
+0,pause
+0,play <any word>
+0,point rusty trident
+0,pound hammer
+0,put on black cape
+0,put on bracelet
+0,put on bridle
+0,put on brooch
+0,put on cross
+0,put on diamond and sapphire necklace
+0,put on diamond and sapphire tiara
+0,put on earrings
+0,put on ring
+0,quit
+0,read amulet
+0,remove black cape
+0,remove cross
+0,remove ring
+0,rescue
+0,restart
+0,restore
+0,say <any word>
+0,say hello
+0,sit carpet
+0,slow
+0,smell bouquet
+0,speak <any word>
+0,status
+0,tester
+0,thank <any word>
+0,use <any word>
+0,wave amulet
+0,wave rusty trident
+0,what is graham last name
+0,who programmed game
+2,<any word> fence
+2,check out fence
+2,enter fence
+3,<any word> flower box
+3,acquire box
+3,break door
+3,break window
+3,check out
+3,check out antique shop
+3,check out area
+3,check out box
+3,check out door
+3,check out window
+3,close box
+3,knock door
+3,look in box
+3,look in window
+3,open box
+3,open door
+5,<any word> door
+5,acquire bell
+5,check out bell
+5,enter door
+7,check out canyon
+13,acquire brooch
+13,acquire jewelry
+13,check out hole
+13,check out lake
+13,look in hole
+15,<any word> bitch
+15,acquire bitch
+15,acquire magic seahorse
+15,capture bitch
+15,capture magic seahorse
+15,check out bitch
+15,check out magic seahorse
+15,climb boulder
+15,climb magic seahorse
+15,embrace bitch
+15,enter boulder
+15,follow bitch
+15,get on boulder
+15,get on flying horse
+15,get on magic seahorse
+15,give <any word> bitch
+15,give bitch blossom
+15,give bitch bouquet
+15,give bitch bracelet
+15,give bitch brooch
+15,give bitch diamond and sapphire necklace
+15,give bitch diamond and sapphire tiara
+15,give bitch earrings
+15,give bitch rusty trident
+15,give bitch treasure
+15,give blossom
+15,give blossom bitch
+15,give bouquet
+15,give bouquet bitch
+15,give bracelet
+15,give bracelet bitch
+15,give brooch
+15,give brooch bitch
+15,give diamond and sapphire necklace
+15,give diamond and sapphire necklace bitch
+15,give diamond and sapphire tiara
+15,give diamond and sapphire tiara bitch
+15,give earrings
+15,give earrings bitch
+15,give rusty trident
+15,give rusty trident bitch
+15,give treasure bitch
+15,kill bitch
+15,kiss bitch
+15,pat magic seahorse
+15,sit magic seahorse
+15,speak bitch
+15,speak magic seahorse
+15,y
+18,<any word> carpet
+18,<any word> tree
+18,acquire ghost
+18,capture ghost
+18,check out ghost
+18,check out island
+18,give <any word>
+18,kill ghost
+18,speak ghost
+20,check out sign
+20,knock
+20,read sign
+20,unlock door
+21,open window
+22,acquire bracelet
+22,acquire clam
+22,check out beach
+22,check out grass
+22,open clam
+23,acquire pole
+23,check out tree
+25,acquire boat
+25,acquire count dracula
+25,board boat
+25,capture count dracula
+25,check out boat
+25,check out bush
+25,check out count dracula
+25,climb boat
+25,climb tree
+25,cross lake
+25,enter boat
+25,enter island
+25,exit boat
+25,get in boat
+25,get on boat
+25,give <any word> count dracula
+25,give count dracula <any word>
+25,kill count dracula
+25,look across lake
+25,speak count dracula
+32,<any word> hello
+32,give bracelet count dracula
+32,give brooch count dracula
+32,give count dracula bracelet
+32,give count dracula brooch
+32,give count dracula diamond and sapphire necklace
+32,give count dracula diamond and sapphire tiara
+32,give count dracula earrings
+32,give count dracula treasure
+32,give diamond and sapphire necklace count dracula
+32,give diamond and sapphire tiara count dracula
+32,give earrings count dracula
+32,give treasure
+32,give treasure count dracula
+35,check out cliff
+35,climb cliff
+35,cross cliff
+35,enter cliff
+36,acquire rusty trident
+38,acquire diamond and sapphire necklace
+38,check out branch
+38,check out chest
+38,check out stump
+38,look in branch
+38,look in chest
+38,look in stump
+40,acquire hammer
+42,<any word> inscription
+42,<any word> key hole
+42,check out inscription
+42,check out key hole
+42,close door
+42,look in key hole
+42,read door
+42,read inscription
+44,<any word> batman
+44,acquire skull
+44,check out skull
+44,look in area
+46,check out tree hole
+48,check out bridge
+48,no
+50,acquire dolphin
+50,capture dolphin
+50,drink lake
+50,look under lake
+51,abracadabra <any word>
+51,acquire gold key
+51,acquire key
+51,break clam
+51,close clam
+51,fight count dracula
+51,get off magic seahorse
+51,give count dracula
+51,give count dracula rusty trident
+51,give rusty trident count dracula
+51,look in clam
+51,open sesame
+51,point rusty trident count dracula
+51,pry clam
+51,wave rusty trident count dracula
+52,look in lake
+56,<any word> <any word> flying horse
+56,<any word> flying horse
+56,acquire flying horse
+56,acquire snake
+56,capture flying horse
+56,capture snake
+56,cast bridle
+56,cast bridle snake
+56,check out flying horse
+56,check out snake
+56,drop bridle snake
+56,feed <any word> flying horse
+56,feed <any word> snake
+56,feed flying horse
+56,feed snake
+56,kill flying horse
+56,kill snake
+56,kiss snake
+56,pat flying horse
+56,sit flying horse
+56,snake
+56,speak flying horse
+56,speak snake
+59,acquire candle
+59,acquire quilt
+59,check out bed
+59,check out bureau
+59,check out drawer
+59,check out ramp
+59,check out stairs
+59,check out swim
+59,close drawer
+59,enter bed
+59,get in bed
+59,get on bed
+59,lie bed
+59,look in drawer
+59,open bureau
+59,open drawer
+59,sit bed
+60,acquire torch
+60,check out torch
+62,acquire chest
+62,acquire diamond and sapphire tiara
+62,break chest
+62,close chest
+62,open chest
+62,unlock chest
+64,acquire ham
+64,check out chair
+64,check out table
+64,sit
+64,sit chair
+64,sit table
+66,acquire rat
+66,capture rat
+66,check out rat
+67,<any word> <any word>
+67,<any word> <any word> count dracula
+67,<any word> count dracula
+67,acquire both keys
+67,acquire both them
+67,acquire casket
+67,acquire cushion
+67,acquire gold one
+67,acquire key gold
+67,acquire key silver
+67,acquire keys
+67,acquire silver key
+67,acquire silver one
+67,anyword anyword
+67,anyword anyword key
+67,anyword key
+67,check out anyword key
+67,check out casket
+67,climb casket
+67,close casket
+67,close lid
+67,enter casket
+67,get in casket
+67,gold key
+67,gold one
+67,key gold
+67,key silver
+67,kill count dracula knife
+67,look in casket
+67,open casket
+67,open lid
+67,pound pole count dracula
+67,show count dracula cross
+67,show cross
+67,silver key
+67,silver one
+67,wake count dracula
+68,acquire antique
+68,acquire lamp
+68,buy antique
+68,buy lamp
+68,check out antique
+68,check out cabinet
+68,give bird bitch
+68,give bird cage bitch
+68,give bitch <any word>
+68,give bitch bird
+68,give bitch bird cage
+68,look in cabinet
+68,no <any word>
+68,steal lamp
+68,y <any word>
+69,acquire bird
+69,acquire bird cage
+69,acquire brew
+69,check out brew
+69,consume brew
+69,cover <any word> black cape
+69,cover bird
+69,cover bird cage
+69,cover bird cage cloth
+69,drink brew
+69,drop black cape
+69,drop black cape bird cage
+69,drop cloth bird cage
+69,let bird <null words>
+69,listen bird
+69,look in cauldron
+69,move bitch cauldron
+69,remove cloth
+69,smell brew
+70,acquire aid bitch
+70,aid bitch
+70,feed <any word> bitch
+70,feed basket bitch
+70,feed bitch basket
+70,feed bitch broth
+70,feed bitch ham
+70,feed broth bitch
+70,feed ham bitch
+70,give basket bitch
+70,give bitch basket
+70,give bitch broth
+70,give bitch ham
+70,give broth bitch
+70,give ham bitch
+70,look under bed
+71,acquire cross
+71,bow <any word>
+71,check out altar
+71,graham
+71,look up cross
+71,my name graham
+71,pat count dracula
+71,pray
+71,pray <any word>
+71,sit <any word>
+71,yell count dracula
+72,check out ladder
+72,climb ladder
+72,get on ladder
+72,look down <any word>
+73,look up
+74,<any word> cap
+74,acquire broth
+74,acquire cauldron
+74,acquire earrings
+74,check out cap
+74,check out fire
+74,lift lid
+75,acquire drink water fall
+75,check out water fall
+75,drink lake water fall
+75,drink water fall
+78,acquire amulet
+83,climb antique shop
+83,look up window
+83,rescue bitch
+90,<any word> graham
+90,love
+90,marry
+90,marry bitch
+91,<any word> <any word> hungry lion
+91,<any word> hungry lion
+91,acquire hungry lion
+91,capture hungry lion
+91,cast <any word>
+91,cast basket
+91,cast broth
+91,cast ham
+91,cast ham hungry lion
+91,cast hungry lion basket
+91,cast hungry lion broth
+91,cast hungry lion ham
+91,cast knife
+91,cast knife hungry lion
+91,check out hungry lion
+91,embrace hungry lion
+91,feed basket
+91,feed broth
+91,feed ham
+91,feed ham hungry lion
+91,feed hungry lion
+91,feed hungry lion basket
+91,feed hungry lion broth
+91,feed hungry lion ham
+91,give basket
+91,give broth
+91,give ham
+91,give ham hungry lion
+91,give hungry lion basket
+91,give hungry lion broth
+91,give hungry lion ham
+91,kill hungry lion
+91,kill hungry lion knife
+91,kiss hungry lion
+91,pat hungry lion
+91,speak hungry lion
+91,stab hungry lion
+91,stab hungry lion knife
+91,wake hungry lion
+99,acquire object
+99,check out flag
+99,drop flag
+99,drop var
+99,object
+99,pos
+99,position
+99,reset flag
+99,sf
+99,show flag
+99,show var
+99,sv
+99,tp
+101,enter swim
+101,swim
+101,swim <any word>
+151,<any word> blossom
+151,<any word> bush
+152,<any word> suntan
+152,acquire beach
+152,acquire blossom
+152,acquire drink
+152,acquire lake
+152,check out blossom
+152,check out wave
+152,dig <any word>
+152,smell blossom
+152,suntan <any word>
+153,steal basket
+153,steal bouquet
+154,hello bitch
+155,climb canyon
+155,cross canyon
+155,enter across canyon
+155,jump across canyon
+155,jump canyon
+158,enter lake
+159,acquire brambles
+159,check out brambles
+159,cut brambles
+163,<any word> cliff
+164,climb
+166,<any word> torch
+167,acquire fishing net
+167,aid dolphin
+167,cast back dolphin
+167,cast dolphin
+167,cast dolphin back
+167,cast dolphin lake
+167,cast fishing net
+167,check out sky
+167,climb dolphin
+167,consume dolphin
+167,dolphin
+167,dolphin <any word>
+167,drop dolphin lake
+167,enter fishing
+167,get on dolphin
+167,kill dolphin
+167,kiss dolphin
+167,rescue dolphin
+167,speak dolphin
