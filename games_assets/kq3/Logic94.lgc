@@ -1,0 +1,72 @@
+[*********************************************************************
+[
+[ Logic94
+[
+[*********************************************************************
+#include "resourceids.txt"
+#include "reserved.txt"
+#include "globals.txt"
+
+display(0, 0, m1);
+v36 = 0;
+put(i1, v36);
+put(i2, v36);
+put(i3, v36);
+put(i4, v36);
+put(i5, v36);
+get(i6);
+put(i7, v36);
+get(i8);
+get(i9);
+get(i10);
+put(i11, v36);
+get(i12);
+put(i13, v36);
+put(i14, v36);
+put(i15, v36);
+get(i16);
+put(i17, v36);
+put(i18, v36);
+put(i19, v36);
+get(i20);
+put(i21, v36);
+put(i22, v36);
+put(i23, v36);
+put(i24, v36);
+put(i25, v36);
+put(i26, v36);
+put(i27, v36);
+put(i28, v36);
+put(i29, v36);
+get(i30);
+put(i31, v36);
+put(i32, v36);
+get(i33);
+put(i34, v36);
+put(i35, v36);
+get(i36);
+get(i37);
+get(i38);
+get(i40);
+get(i41);
+get(i42);
+get(i43);
+put(i47, v36);
+put(i48, v36);
+get(i49);
+get(i50);
+get(i51);
+get(i54);
+v63 = 0;
+v128 = 20;
+v84 = 0;
+v83 = 0;
+v62 = 1;
+v53 = 0;
+v52 = 6;
+set(f79);
+new.room(Logic75);
+return();
+
+[ DECLARED MESSAGES
+#message 1 "Sailing, sailing."

@@ -1,0 +1,182 @@
+[*********************************************************************
+[
+[ Logic122
+[
+[*********************************************************************
+#include "resourceids.txt"
+#include "reserved.txt"
+#include "globals.txt"
+
+if (isset(newRoom))
+    {
+    v240 = 143;
+    return();
+    }
+if ((!isset(haveInput) || 
+    isset(haveMatch)))
+    {
+    goto(Label1);
+    }
+set(f120);
+++v103;
+if ((said("add", "bit", "saffron", "essence") || 
+    said("add", "saffron", "capsule", "essence") || 
+    said("add", "bit", "saffron", "capsule", "essence") || 
+    said("add", "bit", "saffron", "capsule") || 
+    said("add", "saffron", "essence") || 
+    said("add", "saffron", "capsule")))
+    {
+    if ((!has(i11) || 
+        !has(i12)))
+        {
+        print(m1);
+        }
+        else
+        {
+        drop(i11);
+        print(m2);
+        if (v103 == 1)
+            {
+            reset(f120);
+            ++v103;
+            }
+        }
+    }
+if ((said("aim", "rod") || 
+    said("aim", "magic", "rod")))
+    {
+    if (!has(i37))
+        {
+        print(m1);
+        }
+        else
+        {
+        print(m3);
+        if (v103 == 3)
+            {
+            drop(i12);
+            get(i39);
+            reset(f120);
+            }
+        }
+    }
+Label1:
+if (!isset(f120) && 
+    v104 < 4 && 
+    v103 == 2)
+    {
+    set(f120);
+    prevent.input();
+    set.text.attribute(BLACK, WHITE);
+    set.string(s1, m9);
+    if (v104 == 0)
+        {
+        overlay.pic(v240);
+        show.pic();
+        set.string(s2, m4);
+        if (monitorType == MONO)
+            {
+            open.dialogue();
+            get.string(s1, m9, 15, 1, 35);
+            }
+            else
+            {
+                get.string(s1, m9, 13, 1, 35);
+            }
+        if (compare.strings(s1, s2))
+            {
+            reset(f120);
+            }
+        }
+    if (v104 == 1)
+        {
+        set.string(s2, m5);
+        if (monitorType == MONO)
+            {
+            open.dialogue();
+            get.string(s1, m9, 16, 1, 34);
+            }
+            else
+            {
+                get.string(s1, m9, 14, 1, 34);
+            }
+        if (compare.strings(s1, s2))
+            {
+            reset(f120);
+            }
+        }
+    if (v104 == 2)
+        {
+        set.string(s2, m6);
+        if (monitorType == MONO)
+            {
+            open.dialogue();
+            get.string(s1, m9, 17, 1, 33);
+            }
+            else
+            {
+                get.string(s1, m9, 15, 1, 33);
+            }
+        if (compare.strings(s1, s2))
+            {
+            reset(f120);
+            }
+        }
+    if (v104 == 3)
+        {
+        set.string(s2, m7);
+        if (monitorType == MONO)
+            {
+            open.dialogue();
+            get.string(s1, m9, 18, 1, 32);
+            }
+            else
+            {
+                get.string(s1, m9, 16, 1, 32);
+            }
+        if (compare.strings(s1, s2))
+            {
+            reset(f120);
+            }
+        }
+    set.text.attribute(WHITE, BLACK);
+    ++v104;
+    set.string(s1, m9);
+    set.string(s2, m9);
+    if ((isset(f120) || 
+        v104 == 4))
+        {
+        if (monitorType == MONO)
+            {
+            close.dialogue();
+            }
+        draw.pic(currentRoom);
+        show.pic();
+        accept.input();
+        }
+    }
+v36 = v103;
+++v36;
+if (v36 == 4 && 
+    !isset(f120))
+    {
+    v103 = 255;
+    }
+if (isset(f120))
+    {
+    v105 = 38;
+    v106 = 1;
+    }
+return();
+
+[ DECLARED MESSAGES
+#message 1 "It is difficult to use that which you do not have."
+#message 2 "You carefully sprinkle the precious saffron into the vial of rose petal essence."
+#message 3 "You wave the magic wand over the vial of rose petal essence."
+#message 4 "oh winged spirits, set me free"
+#message 5 "of earthly bindings, just like thee."
+#message 6 "in this essence, behold the might"
+#message 7 "to grant the precious gift of flight."
+#message 8 ""
+#message 9 " "
+#message 10 "]"

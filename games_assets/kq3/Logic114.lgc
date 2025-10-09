@@ -1,0 +1,192 @@
+[*********************************************************************
+[
+[ Logic114
+[
+[*********************************************************************
+#include "resourceids.txt"
+#include "reserved.txt"
+#include "globals.txt"
+
+v36 = 114;
+if (!isset(f200) && 
+    !obj.in.room(i9, v36))
+    {
+    return();
+    }
+if (isset(newRoom))
+    {
+    reset(f190);
+    reset(f191);
+    v184 = 0;
+    //Chance to see eagle
+    random(1, 2, v36);
+    if (isset(f31))
+        {
+        v36 = 1;
+        }
+    if (v36 == 1)
+        {
+        //Time to wait
+        random(3, 15, v184);
+        animate.obj(o10);
+        load.view(View26);
+        set.view(o10, View26);
+        ignore.blocks(o10);
+        ignore.horizon(o10);
+        set.priority(o10, 15);
+        position(o10, 1, 30);
+        animate.obj(o11);
+        load.view(View57);
+        set.view(o11, View57);
+        ignore.blocks(o11);
+        ignore.horizon(o11);
+        ignore.objs(o11);
+        set.priority(o11, 15);
+        }
+    return();
+    }
+if (isset(f45) && 
+    v184 > 0)
+    {
+    if (v184 == 1)
+        {
+        set(f200);
+        draw(o10);
+        move.obj(o10, 140, 30, 1, f180);
+        random(1, 2, v36);
+        if (isset(f31))
+            {
+            v36 = 2;
+            }
+            //Chance to drop feather
+            if (v36 == 2)
+            {
+            set(f190);
+            }
+        }
+    --v184;
+    }
+if (isset(f180))
+    {
+    reset(f200);
+    reset(f180);
+    erase(o10);
+    }
+get.posn(o10, v37, v38);
+
+if (isset(f190)) {
+    v146 = v57;
+    v146 -= v37;
+    if (v146 < 3) {
+        reset(f190);
+        position.v(o11, v37, v38);
+        draw(o11);
+        v36 = 2;
+        move.obj.v(o11, v57, v58, v36, f191);
+    }
+}
+if (isset(f191))
+    {
+    release.priority(o11);
+    set.cel(o11, 1);
+    stop.cycling(o11);
+    }
+if ((said("examine", "bird", "feather") || 
+    said("examine", "eagle", "feather") || 
+    said("examine", "feather")))
+    {
+    if (isset(f191))
+        {
+        print(m1);
+        }
+        else
+        {
+        print(m2);
+        }
+    }
+if ((said("capture", "bird", "feather") || 
+    said("capture", "eagle", "feather") || 
+    said("capture", "feather")))
+    {
+    if (isset(f191))
+        {
+        distance(ego, o11, v36);
+        if (v36 > 25)
+            {
+            print(m3);
+            }
+            else
+            {
+            print(m4);
+            reset(f191);
+            erase(o11);
+            get(i9);
+            currentScore  += 2;
+            }
+        }
+        else
+        {
+        print(m2);
+        }
+    }
+if ((said("examine", "up", "eagle") || 
+    said("examine", "up", "bird") || 
+    said("examine", "bird") || 
+    said("examine", "eagle")))
+    {
+    if (isset(f200))
+        {
+        print(m5);
+        }
+        else
+        {
+        reset(haveMatch);
+        }
+    }
+if ((said("capture", "bird") || 
+    said("capture", "eagle")))
+    {
+    if (isset(f200))
+        {
+        print(m3);
+        }
+        else
+        {
+        print(m6);
+        }
+    }
+if ((said("call", "bird") || 
+    said("call", "eagle")))
+    {
+    if (isset(f200))
+        {
+        print(m3);
+        }
+        else
+        {
+        print(m6);
+        }
+    }
+if ((said("examine", "on", "deck") || 
+    said("examine", "deck")))
+    {
+    if (!isset(f191))
+        {
+        reset(haveMatch);
+        }
+        else
+        {
+        print(m8);
+        }
+    }
+return();
+
+[ DECLARED MESSAGES
+#message 1 "Ok, it's a feather."
+#message 2 "What feather?"
+#message 3 "You can't reach it."
+#message 4 "Ok."
+#message 5 "You see a majestic eagle."
+#message 6 "I don't see a bird. Do you?"
+#message 7 "Funny, no response."
+#message 8 "There is a feather on the ground."

@@ -1,0 +1,316 @@
+[*********************************************************************
+[
+[ Logic36
+[
+[*********************************************************************
+#include "resourceids.txt"
+#include "reserved.txt"
+#include "globals.txt"
+
+if (isset(newRoom))
+    {
+    load.view.v(currentEgoView);
+    set.view.v(ego, currentEgoView);
+    load.view(View43);
+    load.view(View44);
+    load.view(View45);
+    load.sound(Sound37);
+    set(f238);
+    load.pic(currentRoom);
+    draw.pic(currentRoom);
+    discard.pic(currentRoom);
+    v220 = 1;
+    v222 = 14;
+    v32 = 107;
+    v31 = 0;
+    v57 = 70;
+    v58 = 140;
+    set(f34);
+    if (isset(f48))
+        {
+        position(ego, 72, 160);
+        }
+    if (isset(f47))
+        {
+        draw(ego);
+        }
+    animate.obj(o1);
+    set.view(o1, View43);
+    set.loop(o1, 0);
+    fix.loop(o1);
+    position(o1, 64, 82);
+    v36 = 4;
+    cycle.time(o1, v36);
+    set.priority(o1, 10);
+    if (isset(f176))
+        {
+        v225 = 11;
+        draw(o1);
+        set(f226);
+        }
+        else
+        {
+        start.motion(ego);
+        set.loop(ego, 3);
+        prevent.input();
+        program.control();
+        v224 = 6;
+        }
+    animate.obj(o2);
+    position(o2, 67, 102);
+    set.view(o2, View44);
+    v36 = 2;
+    cycle.time(o2, v36);
+    set.loop(o2, 0);
+    set.priority(o2, 11);
+    draw(o2);
+    show.pic();
+    return();
+    }
+if (!isset(f227))
+    {
+    set(f227);
+    print(m18);
+    }
+if (isset(f238) && 
+    !isset(f176))
+    {
+    sound(Sound37, f238);
+    }
+if (isset(f45) && 
+    v224 > 0)
+    {
+    if (!isset(f46))
+        {
+        --v224;
+        }
+    if (v224 == 0)
+        {
+        set(f226);
+        }
+    }
+if (isset(f226) && 
+    v225 == 0)
+    {
+    ++v225;
+    set.cel(o1, 0);
+    draw(o1);
+    set(f228);
+    end.of.loop(o1, f226);
+    }
+if (isset(f226) && 
+    v225 == 1)
+    {
+    reset(f226);
+    ++v225;
+    v224 = 5;
+    start.cycling(o2);
+    stop.cycling(o1);
+    set(f225);
+    set.loop(o1, 1);
+    }
+if (isset(f226) && 
+    v225 == 2)
+    {
+    ++v225;
+    reset(f226);
+    print.at(m1, 2, 2, 37);
+    v36 = 5;
+    cycle.time(o2, v36);
+    set.loop(o2, 1);
+    set(f226);
+    start.cycling(o1);
+    }
+if (isset(f226) && 
+    v225 == 3)
+    {
+    ++v225;
+    reset(f226);
+    print.at(m2, 2, 2, 37);
+    set.view(o2, View45);
+    set.loop(o2, 0);
+    set.cel(o2, 0);
+    end.of.loop(o2, f226);
+    }
+if (isset(f226) && 
+    v225 == 4)
+    {
+    ++v225;
+    reset(f226);
+    set.loop(o2, 1);
+    set.cel(o2, 0);
+    end.of.loop(o2, f226);
+    }
+if (isset(f226) && 
+    v225 == 5)
+    {
+    ++v225;
+    print.at(m3, 2, 2, 37);
+    v223 = 0;
+    }
+if (isset(f226) && 
+    v225 == 6)
+    {
+    ++v223;
+    if (v223 > 3)
+        {
+        ++v225;
+        }
+        else
+        {
+        set.loop(o2, 2);
+        set.cel(o2, 0);
+        end.of.loop(o2, f226);
+        }
+    }
+if (isset(f226) && 
+    v225 == 7)
+    {
+    ++v225;
+    reset(f226);
+    start.cycling(o2);
+    set.loop(o2, 3);
+    set.cel(o2, 0);
+    end.of.loop(o2, f226);
+    }
+if (isset(f226) && 
+    v225 == 8)
+    {
+    ++v225;
+    reset(f226);
+    set.view(o2, View44);
+    start.cycling(o2);
+    v36 = 2;
+    cycle.time(o2, v36);
+    set.loop(o2, 0);
+    v224 = 5;
+    }
+if (isset(f226) && 
+    v225 == 9)
+    {
+    ++v225;
+    reset(f226);
+    print.at(m5, 2, 2, 37);
+    v224 = 5;
+    }
+if (isset(f226) && 
+    v225 == 10)
+    {
+    v62 = 1;
+    ++v225;
+    reset(f226);
+    set.cel(o2, 0);
+    print.at(m6, 2, 2, 37);
+    set(f176);
+    get(i14);
+    currentScore  += 3;
+    v224 = 2;
+    }
+if (isset(f226) && 
+    v225 == 11)
+    {
+    ++v225;
+    set(f228);
+    stop.cycling(o1);
+    set.loop(o1, 0);
+    last.cel(o1, v36);
+    set.cel.v(o1, v36);
+    set(f226);
+    }
+if (isset(f226) && 
+    v225 == 12)
+    {
+    ++v225;
+    random(0, 1, v36);
+    v36 = 0;
+    set.loop.v(o2, v36);
+    accept.input();
+    player.control();
+    }
+if (isset(haveInput))
+    {
+    if ((said("call") || 
+        said("call", "bandit")))
+        {
+        if (!isset(f176) && 
+            !isset(f228))
+            {
+            set(f226);
+            }
+            else
+            {
+            print(m8);
+            }
+        }
+    if (said("capture", "bandit"))
+        {
+        print(m13);
+        }
+    if ((said("examine") || 
+        said("examine", "cave") || 
+        said("look in", "cave")))
+        {
+        print(m7);
+        }
+    if (said("examine", "bandit"))
+        {
+        if (!isset(f176))
+            {
+            print(m9);
+            }
+            else
+            {
+            print(m14);
+            }
+        }
+    if ((said("look in", "crystal") || 
+        said("examine", "crystal") || 
+        said("look in", "ball") || 
+        said("examine", "ball")))
+        {
+        print(m10);
+        }
+    if ((said("break", "ball") || 
+        said("break", "crystal") || 
+        said("capture", "ball") || 
+        said("capture", "crystal")))
+        {
+        print(m11);
+        }
+    if ((said("examine", "out") || 
+        said("examine", "out", "cave")))
+        {
+        print(m12);
+        }
+    if (obj.in.room(i33, currentRoom) && 
+        said("capture", "dagger"))
+        {
+        get(i33);
+        print(m13);
+        }
+    }
+if (edgeEgoHit == BOTTOM_EDGE)
+    {
+    new.room(Logic14);
+    }
+return();
+
+[ DECLARED MESSAGES
+#message 1 "The Oracle remains silent for a long time. Finally, you hear a hollow voice that seems to come from far away, \"I've been waiting for you a long time, Gwydion. I have sorrowful news for you.\""
+#message 2 "\"Years ago, a terrible three-headed dragon invaded Daventry, and keeps the people in a state of terror. This monster requires, once a year, the sacrifice of a young maiden.\""
+#message 3 "\"Sadly, your own sister, Princess Rosella, is the chosen one this year. Time is running out for her, your parents, and Daventry.\""
+#message 4 "Silence again...then, \"Behold the crystal ball!\" Within the ball, the medley of colors swirl together to form a vision of a dragon with three hideous heads. Then, the image changes to reveal a beautiful blond girl, crying. Your heart goes out to her."
+#message 5 "\"You, Gwydion,\" the hollow voice continues, \"are the only one who can save them. But, you must hurry! I have something to give you...a small stone of amber. Use it wisely, my friend.\""
+#message 6 "The Oracle grows silent again, and seems to fall into a deep sleep. You attempt to thank the Oracle, but the Oracle does not respond."
+#message 7 "You have entered the cave of the Oracle, whose image shimmers indistinctly above a crystal ball."
+#message 8 "The Oracle is in a deep state of meditation. You are not heard."
+#message 9 "The Oracle`s image is vague and indistinct, and seems to shimmer slightly as he (she, it?) hovers over a large crystal ball. The Oracle gazes intently into it."
+#message 10 "The clear, polished ball of crystal rests upon a stone dais. Within it, you see a kaleidoscope of bright colors and flashing lights, occasionally blurred by dark, ominous shadows."
+#message 11 "That is impossible. No mere mortal may touch the mystic ball."
+#message 12 "You see the green countryside of Llewdor out the opening of the cave."
+#message 13 "You can't get an oracle!"
+#message 14 "The Oracle appears to be deep in meditation."
+#message 15 "DELETE"
+#message 16 "DELETE"
+#message 17 "The Oracle is in a deep state of meditation. You are not heard."
+#message 18 "You have entered the cave of the Oracle. You are almost afraid to speak."
