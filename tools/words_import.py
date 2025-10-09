@@ -7,7 +7,7 @@ import config
 
 
 # Blacklist of words that should not receive Hebrew prefixes
-HEBREW_PREFIX_BLACKLIST = ["הרים"]
+HEBREW_PREFIX_BLACKLIST = ["הרים","חם","על","מטה","עט","רק","של","זמן","הכן","עלה","שלך","כל"]
 
 
 

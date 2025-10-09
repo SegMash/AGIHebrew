@@ -83,6 +83,29 @@ echo.
 echo Continuing with automated process...
 echo.
 
+
+REM Clean work directory (fail on error) without PowerShell (avoid quoting issues)
+echo Cleaning work directory: %WORK_DIR%
+if not exist "%WORK_DIR%" (
+    echo ERROR: Work directory missing: %WORK_DIR%
+    exit /b 1
+)
+
+pushd "%WORK_DIR%" >nul 2>&1 || (echo ERROR: Cannot enter %WORK_DIR% & exit /b 1)
+
+REM Delete files first
+for /f "delims=" %%F in ('dir /a:-d /b 2^>nul') do (
+    del /f /q "%%F" >nul 2>&1 || (echo ERROR deleting file %%F & popd & exit /b 1)
+)
+
+REM Delete directories
+for /f "delims=" %%D in ('dir /ad /b 2^>nul') do (
+    rd /s /q "%%D" >nul 2>&1 || (echo ERROR deleting directory %%D & popd & exit /b 1)
+)
+
+popd >nul 2>&1
+echo Work directory cleaned.
+pause
 xcopy "%CLEAN_DIR%\*DIR" "%WORK_DIR%\" /Y
 xcopy "%CLEAN_DIR%\VOL.*" "%WORK_DIR%\" /Y
 xcopy "%CLEAN_DIR%\WORDS.TOK" "%WORK_DIR%\" /Y

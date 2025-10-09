@@ -93,14 +93,14 @@ def object_export(gamedir, csvdir):
         dict_writer.writeheader()
 
         dict_writer.writerow({
-            config.object_keys['room']: 'max_num_of_animated',
+            config.object_keys['index']: 'max_num_of_animated',
             config.object_keys['original']: max_num_of_animated,
             config.object_keys['comments']: "אין לשנות שורה זו",
         })
 
         for entry in objects:
             dict_writer.writerow({
-                config.object_keys['room']: entry['index'],  # Object number (index)
+                config.object_keys['index']: entry['index'],  # Object number (index)
                 config.object_keys['original']: entry['name']  # Object name
             })
 

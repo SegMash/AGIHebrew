@@ -1,7 +1,18 @@
 #!/usr/bin/env python3
 """
 Replace object names with numbers in AGI logic files.
-Scans get(), has(), and drop() commands and replaces object names with numbers from CSV mapping.
+
+Currently supports:
+    get("Object Name")      -> get(iNN)
+    has("Object Name")      -> has(iNN)
+    drop("Object Name")     -> drop(iNN)
+    obj.in.room("Object Name", currentRoom) -> obj.in.room(iNN, currentRoom)
+    put("Object Name", <target/room/...>) -> put(iNN, <target/room/...>)
+
+Enhancements:
+    * Supports optional trailing '*' in source (e.g., "Dog Hair*") by attempting
+        a lookup without the asterisk if the exact form isn't found.
+    * Case-sensitive exact match first; fallback match without trailing '*'.
 """
 
 import argparse
@@ -57,31 +68,69 @@ def backup_src_folder(src_folder):
         return False
 
 
-def replace_object_in_command(content, object_mapping):
-    """Replace object names with numbers in get, has, and drop commands"""
-    changes_made = 0
-    
-    # Pattern to match get("object"), has("object"), drop("object")
-    # This handles both single and double quotes, and captures the command and object name
-    pattern = r'\b(get|has|drop)\s*\(\s*["\']([^"\']+)["\']\s*\)'
-    
-    def replace_match(match):
-        nonlocal changes_made
+def replace_object_references(content, object_mapping):
+    """Replace object names with numbers in supported command patterns."""
+    total_changes = 0
+
+    # 1. get/has/drop commands
+    cmd_pattern = r'\b(get|has|drop)\s*\(\s*["\']([^"\']+)["\']\s*\)'
+
+    def replace_simple(match):
+        nonlocal total_changes
         command = match.group(1)
         object_name = match.group(2)
-        
-        if object_name in object_mapping:
-            object_number = object_mapping[object_name]
-            changes_made += 1
-            return f"{command}(i{object_number})"
-        else:
-            # Object not found in mapping, keep original
-            return match.group(0)
-    
-    # Apply replacements
-    new_content = re.sub(pattern, replace_match, content, flags=re.IGNORECASE)
-    
-    return new_content, changes_made
+        number = object_mapping.get(object_name)
+        if number is None and object_name.endswith('*'):
+            base = object_name.rstrip('*').strip()
+            if base in object_mapping:
+                number = object_mapping[base]
+        if number is not None:
+            total_changes += 1
+            return f"{command}(i{number})"
+        return match.group(0)
+
+    content = re.sub(cmd_pattern, replace_simple, content)
+
+    # 2. obj.in.room("Name", <rest>) pattern
+    # Capture object name and the remainder (comma + rest of args until closing paren)
+    room_pattern = r'\bobj\.in\.room\s*\(\s*["\']([^"\']+)["\'](\s*,[^)]*?)\)'
+
+    def replace_room(match):
+        nonlocal total_changes
+        object_name = match.group(1)
+        remainder = match.group(2)
+        number = object_mapping.get(object_name)
+        if number is None and object_name.endswith('*'):
+            base = object_name.rstrip('*').strip()
+            if base in object_mapping:
+                number = object_mapping[base]
+        if number is not None:
+            total_changes += 1
+            return f"obj.in.room(i{number}{remainder})"
+        return match.group(0)
+
+    content = re.sub(room_pattern, replace_room, content)
+
+    # 3. put("Name", <rest>) pattern (similar to obj.in.room but without prefix)
+    put_pattern = r'\bput\s*\(\s*["\']([^"\']+)["\'](\s*,[^)]*?)\)'
+
+    def replace_put(match):
+        nonlocal total_changes
+        object_name = match.group(1)
+        remainder = match.group(2)
+        number = object_mapping.get(object_name)
+        if number is None and object_name.endswith('*'):
+            base = object_name.rstrip('*').strip()
+            if base in object_mapping:
+                number = object_mapping[base]
+        if number is not None:
+            total_changes += 1
+            return f"put(i{number}{remainder})"
+        return match.group(0)
+
+    content = re.sub(put_pattern, replace_put, content)
+
+    return content, total_changes
 
 
 def process_logic_file(file_path, object_mapping):
@@ -104,17 +153,17 @@ def process_logic_file(file_path, object_mapping):
         if content is None:
             print(f"⚠️  Could not read file: {file_path}")
             return 0
-        
-        # Replace object names with numbers
-        new_content, changes_made = replace_object_in_command(content, object_mapping)
-        
+
+        # Replace object references in supported patterns
+        new_content, changes_made = replace_object_references(content, object_mapping)
+
         # Write back if changes were made (prefer Windows-1255 for AGI files)
         if changes_made > 0:
             write_encoding = 'windows-1255' if used_encoding in ['windows-1255', 'latin-1'] else 'utf-8'
             with open(file_path, 'w', encoding=write_encoding) as f:
                 f.write(new_content)
             print(f"   📝 {file_path.name}: {changes_made} replacements (encoding: {used_encoding}→{write_encoding})")
-        
+
         return changes_made
         
     except Exception as e:
