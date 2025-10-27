@@ -191,4 +191,5 @@ if exist "%ORIG_DIR%\*uninstaller.exe" (
 
 call .\tools\create_patches.cmd "%ORIG_DIR%" "%WORK_DIR%" "%NSIS_DIR%"
 echo Copy the MD5 value below for AGI detection table:
+echo "(Get-FileHash -Algorithm MD5 '%WORK_DIR%\LOGDIR').Hash.ToLower()"
 powershell -Command "(Get-FileHash -Algorithm MD5 '%WORK_DIR%\LOGDIR').Hash.ToLower()"
