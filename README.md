@@ -386,3 +386,26 @@ Translation tools and scripts are provided under MIT License. Original game cont
 
 **Happy adventuring in Hebrew!**  
 **!הרפתקה טובה בעברית**
+
+
+
+Notes:
+How to work with scumm fork github repository
+# Before starting new translation work:
+git checkout master
+git pull upstream master
+git push origin master  # Keep your fork in sync
+
+# Create feature branch for new work:
+git checkout -b <kq?-hebrew-translation>
+# Do your translation work...
+git add .
+git commit -m "AGI: Adding Hebrew translation for KQ?"
+git push origin <kq?-hebrew-translation>
+
+# To create pull request as properly:
+git fetch upstream
+git checkout master
+git reset --hard upstream/master
+git cherry-pick <your-commit-hash>
+git push --force-with-lease origin master
