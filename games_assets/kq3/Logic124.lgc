@@ -68,6 +68,8 @@ if ((said("add", "cup", "night shade", "basin") ||
     said("add", "one", "cup", "night shade", "basin") || 
     said("add", "night shade", "basin") || 
     said("add", "night shade", "juice", "basin") || 
+    said("add", "juice", "basin") || 
+    said("add", "night shade", "basin") || 
     said("add", "juice", "night shade", "basin") || 
     said("drain", "cup", "juice", "basin") || 
     said("drain", "cup", "night shade", "basin") || 

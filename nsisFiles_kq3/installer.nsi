@@ -87,11 +87,13 @@ Section "Update file"
     !insertmacro BackupAndUpdateFile WORDS.TOK
     File WORDS.TOK.EXTENDED
     File agi-font-dos.bin
+    File "מדריך שיקויים.pdf"
 SectionEnd
 
 Section "Uninstall"
     Delete $INSTDIR\WORDS.TOK.EXTENDED
     Delete $INSTDIR\agi-font-dos.bin
+    Delete "$INSTDIR\מדריך שיקויים.pdf"
     Delete $INSTDIR\PQ1.WAG #TODO remove this
     CopyFiles "$INSTDIR\${BACKUPDIR}\*.*" $INSTDIR
     Rmdir /r "$INSTDIR\${BACKUPDIR}"
