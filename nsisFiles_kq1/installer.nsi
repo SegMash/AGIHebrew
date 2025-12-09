@@ -81,7 +81,7 @@ Section "Update file"
     WriteUninstaller $INSTDIR\${UNINSTALLER_NAME}
 
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ1_Hebrew" \
-                     "DisplayName" "PQ1 Hebrew translation"
+                     "DisplayName" "KQ1 Hebrew translation"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KQ1_Hebrew" \
                      "UninstallString" "$INSTDIR\${UNINSTALLER_NAME}"
 
@@ -101,7 +101,7 @@ SectionEnd
 Section "Uninstall"
     Delete $INSTDIR\WORDS.TOK.EXTENDED
     Delete $INSTDIR\agi-font-dos.bin
-    Delete $INSTDIR\PQ1.WAG #TODO remove this
+    Delete $INSTDIR\KQ1.WAG #TODO remove this
     CopyFiles "$INSTDIR\${BACKUPDIR}\*.*" $INSTDIR
     Rmdir /r "$INSTDIR\${BACKUPDIR}"
     Delete $INSTDIR\${UNINSTALLER_NAME}
