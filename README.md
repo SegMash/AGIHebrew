@@ -398,6 +398,10 @@ Translation tools and scripts are provided under MIT License. Original game cont
 
 Notes:
 How to work with scumm fork github repository
+Remove proxy settings:
+Remove-Item Env:\HTTP_PROXY -ErrorAction SilentlyContinue; Remove-Item Env:\HTTPS_PROXY -ErrorAction SilentlyContinue; Remove-Item Env:\http_proxy -ErrorAction SilentlyContinue; Remove-Item Env:\https_proxy -ErrorAction SilentlyContinue; 
+git config --global --unset http.proxy; git config --global --unset https.proxy
+
 # Before starting new translation work:
 git checkout master
 git pull upstream master
@@ -416,3 +420,13 @@ git checkout master
 git reset --hard upstream/master
 git cherry-pick <your-commit-hash>
 git push --force-with-lease origin master
+
+# Fix after comments
+git checkout <kq?-hebrew-translation>
+# Make your changes to the files
+# ... edit your files ...
+# Stage and commit your changes
+git add .
+git commit -m "AGI: Your description of the change"
+# Push to the same branch (this updates the pull request automatically)
+git push origin <kq?-hebrew-translation>
