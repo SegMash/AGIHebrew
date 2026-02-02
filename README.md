@@ -28,6 +28,13 @@ AGIHebrew/
 ```
 
 ## Quick Start Guide
+In order to do quick changes - edit messages.csv/objects.scv/words.csv files.
+You can add also new files in assets dir but you should copy them manually to your clean dir. (follow the script instructions)
+The script is:
+```bash
+translate_game.cmd "orig_dir" "clean_dir" "work_dir" "translation_dir" "nsis_dir"
+```
+## Development Guide
 
 ### Phase 1: Setup and Preparation
 
